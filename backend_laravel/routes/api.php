@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', [\App\Http\Controllers\AutheController::class, 'user']);
 
 Route::get('/signup', [\App\Http\Controllers\api\UserController::class, 'register']);
+
+
+Route::get('/getData', [\App\Http\Controllers\AutheController::class, 'dulieu']);

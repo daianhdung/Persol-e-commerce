@@ -27,6 +27,6 @@ class UserController extends ResponseController
         $requestData['password'] = Hash::make($requestData['password']) ;
         $user = User::create($requestData);
 
-        return $this->sendResponse($user, 'Đăng ký tài khoản thành công !');
+        return $this->successResponse($user, 'Đăng ký tài khoản thành công !');
     }
 }
