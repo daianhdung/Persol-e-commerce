@@ -3,12 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
 
     protected $table = 'user';
+    public $timestamps = false;
     protected $primaryKey = 'id';
     protected $fillable = [
         'email',
@@ -20,17 +21,4 @@ class User extends Authenticatable
         'role_id'
     ];
 
-//    protected $hidden = [
-//        'password',
-//        'remember_token',
-//    ];
-//
-//    /**
-//     * The attributes that should be cast.
-//     *
-//     * @var array<string, string>
-//     */
-//    protected $casts = [
-//        'email_verified_at' => 'datetime',
-//    ];
 }

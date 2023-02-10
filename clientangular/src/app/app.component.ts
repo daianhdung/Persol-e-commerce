@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clientangular';
+  message = 'This is an success alert';
 }
