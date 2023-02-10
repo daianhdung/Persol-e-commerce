@@ -96,3 +96,8 @@ ALTER TABLE `order` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 ALTER TABLE `product_order` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 ALTER TABLE `product_order` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
+
+INSERT INTO role(id, name, description ) VALUES (1, "ROLE_ADMIN", "Admin");
+INSERT INTO role(id, name, description ) VALUES (2, "ROLE_USER", "Customer");
+
+
