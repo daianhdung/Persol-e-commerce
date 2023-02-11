@@ -3,16 +3,32 @@
 </a>
 <div class="row justify-content-center my-5 text-white">Login</div>
 <div class="row justify-content-center">
-  <form>
+  <form [formGroup]="formData">
     <!-- Email input -->
     <div class="form-outline mb-4">
-      <input type="email" id="form2Example1" class="form-control" />
+      <div
+      *ngIf="
+        formData.get('email')?.touched &&
+        formData.get('email')?.hasError('required')
+      "
+    >
+      <span class="text-danger">Email is required</span>
+    </div>
+      <input type="email" formControlName="email" class="form-control" />
       <label class="form-label" for="form2Example1">Email address</label>
     </div>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-      <input type="password" id="form2Example2" class="form-control" />
+      <div
+      *ngIf="
+        formData.get('password')?.touched &&
+        formData.get('password')?.hasError('required')
+      "
+    >
+      <span class="text-danger">Password is required</span>
+    </div>
+      <input type="password" formControlName="password" class="form-control" />
       <label class="form-label" for="form2Example2">Password</label>
     </div>
 
@@ -41,7 +57,7 @@
     </div>
 
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4">
+    <button (click)="submitForm()" type="button" [disabled]="!isFormValid()" class="btn btn-primary btn-block mb-4">
       Sign in
     </button>
 

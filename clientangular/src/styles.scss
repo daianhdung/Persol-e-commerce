@@ -2,3 +2,11 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+@import 'ngx-toastr/toastr';
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// boostrap 5
+@import 'ngx-toastr/toastr-bs5-alert';

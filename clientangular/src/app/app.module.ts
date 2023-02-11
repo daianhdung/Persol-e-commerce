@@ -11,6 +11,9 @@ import { AdminheaderComponent } from './component/layout/component/admin/adminhe
 import { AdminfooterComponent } from './component/layout/component/admin/adminfooter/adminfooter.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/authenlayout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/auth
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    JwtModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]
