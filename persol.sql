@@ -100,4 +100,6 @@ ALTER TABLE `product_order` ADD FOREIGN KEY (`product_id`) REFERENCES `product` 
 INSERT INTO role(id, name, description ) VALUES (1, "ROLE_ADMIN", "Admin");
 INSERT INTO role(id, name, description ) VALUES (2, "ROLE_USER", "Customer");
 
+INSERT INTO `user` (`id`, `email`, `password`, `fullname`, `phone`, `address`, `date`, `role_id`) VALUES (NULL, 'admin@gmail.com', '$2a$10$kAvJY6I3l.VEa9vCEeFV6un18QzgX9pW3B3AfsIhUFdukqXOe5uiK', 'ADMIN', 091234567, 'test', '2023-02-11 14:23:26', '1');
+INSERT INTO `user` (`id`, `email`, `password`, `fullname`, `phone`, `address`, `date`, `role_id`) VALUES (NULL, 'user@gmail.com', '$2a$10$/QPViOFoUAEV3HKPJ3hbOOYyj0i7W0xZcAxPluujW88YTPMQdpEgi', 'Đại Dũng', NULL, NULL, '2023-02-11 14:23:26', '2');
 

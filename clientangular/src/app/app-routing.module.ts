@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './auth/admin.guard';
+import { UserGuard } from './auth/user.guard';
 import { AdminlayoutComponent } from './component/layout/admin/adminlayout/adminlayout.component';
 import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/authenlayout.component';
 import { DefaultlayoutComponent } from './component/layout/default/defaultlayout/defaultlayout.component';
@@ -12,6 +14,7 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultlayoutComponent,
+    // canActivate: [UserGuard],
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
@@ -43,6 +46,7 @@ const routes: Routes = [
   {
     path: '',
     component: AdminlayoutComponent,
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: '/admin-home', pathMatch: 'full' },
       {
