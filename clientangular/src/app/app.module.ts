@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     FontAwesomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    JwtModule.forRoot({})
+    JwtModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]
