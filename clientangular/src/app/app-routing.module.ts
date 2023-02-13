@@ -5,6 +5,7 @@ import { UserGuard } from './auth/user.guard';
 import { AdminlayoutComponent } from './component/layout/admin/adminlayout/adminlayout.component';
 import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/authenlayout.component';
 import { DefaultlayoutComponent } from './component/layout/default/defaultlayout/defaultlayout.component';
+import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
 import { AdmindetailComponent } from './component/pages/admin/admindetail/admindetail.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
 import { SignupComponent } from './component/pages/signup/signup.component';
@@ -57,6 +58,7 @@ const routes: Routes = [
           ),
       },
       { path: 'admin-detail', component: AdmindetailComponent },
+      { path: 'admin-dashboard', component: AdminDashboardComponent }
     ],
   },
 ];

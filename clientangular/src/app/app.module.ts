@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +14,43 @@ import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/auth
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {
+  AvatarModule,
+  BadgeModule,
+  BreadcrumbModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FooterModule,
+  FormModule,
+  GridModule,
+  HeaderModule,
+  ListGroupModule,
+  NavModule,
+  ProgressModule,
+  SharedModule,
+  SidebarModule,
+  TabsModule,
+  UtilitiesModule,
+} from '@coreui/angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+  PerfectScrollbarModule,
+} from 'ngx-perfect-scrollbar';
 
+import { IconModule } from '@coreui/icons-angular';
+
+import { IconSetService } from '@coreui/icons-angular';
+import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
 @NgModule({
   declarations: [
@@ -35,8 +70,40 @@ import { JwtModule } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({}),
+    NgbModule,
+
+    //Admin Module
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+    PerfectScrollbarModule,
+    NavModule,
+    ButtonModule,
+    FormModule,
+    UtilitiesModule,
+    ButtonGroupModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
+    HeaderModule
   ],
-  providers: [],
+  providers: [
+  {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+  },
+  IconSetService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule {
