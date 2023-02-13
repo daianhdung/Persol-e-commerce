@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { DefaultRoutingModule } from './default-routing.module';
 import { HomeComponent } from '../../pages/home/home.component';
 import { DetailComponent } from '../../pages/detail/detail.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from '../component/carousel/carousel/carousel.component';
 
 
@@ -16,7 +15,6 @@ import { CarouselComponent } from '../component/carousel/carousel/carousel.compo
   imports: [
     CommonModule,
     DefaultRoutingModule,
-    NgbModule,
     CarouselComponent
   ]
 })
