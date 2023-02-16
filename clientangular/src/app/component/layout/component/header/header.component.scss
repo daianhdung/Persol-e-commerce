@@ -1,12 +1,11 @@
 .dropdown-menu {
-    display: none;
-  
-    &.show {
-      display: block;
-    }
-  }
-  
-  .dropdown:hover .dropdown-menu {
+  display: none;
+
+  &.show {
     display: block;
   }
-  
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

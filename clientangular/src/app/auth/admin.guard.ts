@@ -1,28 +1,34 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { CookieService } from 'app/services/storageService/cookie.service';
+
+import { LoginService } from 'app/services/authService/login.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  constructor(private cookieService: CookieService, public jwtHelper: JwtHelperService){}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if(this.cookieService.get('jwtToken')){
-          const token = this.cookieService.get('jwtToken')
-          if(token){
-            const decodedToken = this.jwtHelper.decodeToken(token)
-            if(decodedToken.sub1.roleId === 1){
-              return true
-            }
-          }
-        }
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    if (this.loginService.isAdminAuthenticated()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']); // Redirect to login page
       return false;
+    }
   }
-  
 }
