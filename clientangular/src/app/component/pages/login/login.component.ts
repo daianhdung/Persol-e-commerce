@@ -45,11 +45,9 @@ export class LoginComponent {
               this.cookieService.set('jwtToken', response.data.data.authorisation.token, response.data.data.authorisation.expiration)
               console.log(response.data);
               if(response.data.data.user.role_id == 1){
-                console.log(111);
-                this.router.navigate(['/admin-home'])
-                
+                this.router.navigate(['/admin-dashboard'])
               }else if(response.data.data.user.role_id == 2){
-
+                this.router.navigate(['/home'])
               }
             }
           })
@@ -60,4 +58,5 @@ export class LoginComponent {
       }
     }
   }
+
 }

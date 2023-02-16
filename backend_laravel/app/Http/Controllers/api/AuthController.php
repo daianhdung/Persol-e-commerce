@@ -46,7 +46,4 @@ class AuthController extends ResponseController
 
     }
 
-    public function test(){
-        return $this->successResponse(["hahaha"], 'haah');
-    }
 }

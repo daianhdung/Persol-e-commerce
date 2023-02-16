@@ -1,6 +1,6 @@
 <!-- Remove the container if you want to extend the Footer to full width. -->
 <div style="background-color: #23242a;">
-    <div class="container my-5">
+    <div class="container mt-5" style="margin-bottom: 30px;">
         <footer class="text-white text-center text-lg-start" >
           <!-- Grid container -->
           <div class="container p-4">
@@ -86,9 +86,15 @@
             <!--Grid row-->
           </div>
           <!-- Grid container -->
-    
         </footer>
-        
     </div>
 </div>
   <!-- End of .container -->
+<span>
+  <div class="scroll-text-container">
+    <p class="scroll-text">Current datetime is: {{date| date:'fullDate'}} {{ time }} Address: {{address}}</p>
+  </div>
+</span>
+
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>

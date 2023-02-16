@@ -8,6 +8,7 @@ import { DefaultlayoutComponent } from './component/layout/default/defaultlayout
 import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
 import { AdmindetailComponent } from './component/pages/admin/admindetail/admindetail.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
+import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
 import { SignupComponent } from './component/pages/signup/signup.component';
 
 const routes: Routes = [
@@ -61,6 +62,10 @@ const routes: Routes = [
       { path: 'admin-dashboard', component: AdminDashboardComponent }
     ],
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  }
 ];
 
 @NgModule({

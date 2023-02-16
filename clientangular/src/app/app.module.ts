@@ -47,6 +47,8 @@ import { IconModule } from '@coreui/icons-angular';
 
 import { IconSetService } from '@coreui/icons-angular';
 import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
+import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -61,7 +63,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AdminlayoutComponent,
     AdminheaderComponent,
     AdminfooterComponent,
-    AuthenlayoutComponent
+    AuthenlayoutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ToastrModule.forRoot(),
     JwtModule.forRoot({}),
     NgbModule,
+    HttpClientModule,
 
     //Admin Module
     AvatarModule,
