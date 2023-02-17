@@ -6,7 +6,7 @@ export const navItems: INavData[] = [
 
   {
     name: 'Dashboard',
-    url: '/dashboard',
+    url: '/admin-dashboard',
     iconComponent: { name: 'cil-speedometer' },
     badge: {
       color: 'info',
@@ -19,30 +19,30 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Users',
-    url: '/admin-user',
+    url: '/admin-user-list',
     iconComponent: { name: 'cil-user' },
     children: [
       {
         name: 'Form',
-        url: 'admin-user/form'
+        url: '/admin-user-create'
       },{
         name: 'List',
-        url: 'admin-user/list'
+        url: '/admin-user-list'
       }
     ]
   },
   {
     name: 'Product',
-    url: '/admin-product',
+    url: '/admin-product-list',
     linkProps: { fragment: 'someAnchor' },
     iconComponent: { name: 'cil-clipboard' },
     children: [
       {
         name: 'Form',
-        url: 'admin-product/form'
+        url: '/admin-product-create'
       },{
         name: 'List',
-        url: 'admin-product/list'
+        url: '/admin-product-list'
       }
     ]
   },
@@ -57,7 +57,7 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Profile',
-        url: '/base/breadcrumbs'
+        url: '/admin-profile'
       },
       {
         name: 'Password',

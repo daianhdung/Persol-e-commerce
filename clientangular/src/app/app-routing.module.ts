@@ -6,9 +6,14 @@ import { AdminlayoutComponent } from './component/layout/admin/adminlayout/admin
 import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/authenlayout.component';
 import { DefaultlayoutComponent } from './component/layout/default/defaultlayout/defaultlayout.component';
 import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
+import { CreateProductComponent } from './component/pages/admin/admin-product/create-product/create-product.component';
+import { ListProductComponent } from './component/pages/admin/admin-product/list-product/list-product.component';
+import { UserCreateComponent } from './component/pages/admin/admin-user/user-create/user-create.component';
+import { UserListComponent } from './component/pages/admin/admin-user/user-list/user-list.component';
 import { AdmindetailComponent } from './component/pages/admin/admindetail/admindetail.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
 import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
+import { ProfileComponent } from './component/pages/profile/profile.component';
 import { SignupComponent } from './component/pages/signup/signup.component';
 
 const routes: Routes = [
@@ -59,7 +64,12 @@ const routes: Routes = [
           ),
       },
       { path: 'admin-detail', component: AdmindetailComponent },
-      { path: 'admin-dashboard', component: AdminDashboardComponent }
+      { path: 'admin-dashboard', component: AdminDashboardComponent },
+      { path: 'admin-user-list', component: UserListComponent },
+      { path: 'admin-product-list', component: ListProductComponent },
+      { path: 'admin-user-create', component: UserCreateComponent },
+      { path: 'admin-product-create', component: CreateProductComponent },
+      { path: 'admin-profile', component: ProfileComponent }
     ],
   },
   {
