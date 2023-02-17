@@ -1,0 +1,62 @@
+<form style="user-select: 'none'">
+    <div class="row">
+        <div class="mb-3 col-md-5">
+            <label htmlFor="email" class="form-label">Địa chỉ email</label>
+            <input style="height: '3';user-select:'none'" type="email" class="form-control form-control-lg" id="email" placeholder="" disabled />
+        </div>
+        <div class="mb-3 col-md-5 h-50">
+            <label htmlFor="fullname" class="form-label">Tên đầy đủ</label>
+            <input style="height: '35px'" type="text" class="form-control form-control-lg" id="fullname" placeholder="" />
+            <!-- {errors.fullname && <span class="text-danger">{errors.fullname}</span>} -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-5 h-50">
+            <label htmlFor="address" class="form-label">Địa chỉ</label>
+            <input style="height: '35px'" type="text" class="form-control form-control-lg" id="address" placeholder="" />
+            <!-- {errors.address && <span class="text-danger">{errors.address}</span>} -->
+        </div>
+        <div class="mb-3 col-md-5 h-50">
+            <label htmlFor="phone" class="form-label">Số điện thoại</label>
+            <input style="height: '35px'" type="text" class="form-control form-control-lg" id="phone" placeholder="" />
+            <!-- {errors.phone && <span class="text-danger">{errors.phone}</span>} -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="mb-3 col-md-5 h-50">
+            <label htmlFor="formFile" class="form-label">Avatar</label>
+            <input style="height: '30px'" class="form-control form-control-lg" type="file" id="formFile" />
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-info btn-lg mt-3">Lưu thay đổi</button>
+</form>
+
+<!-- Test -->
+
+<form style="user-select: 'none'">
+    <div class="row">
+        <div class="mb-3 col-md-5">
+            <label htmlFor="password" class="form-label">Mật khẩu cũ</label>
+            <input style="height: '35px'; user-select: 'none'" type="password" class="form-control form-control-lg" id="password" placeholder='*******'/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-5 h-50">
+            <label htmlFor="newPassword" class="form-label">Mật khẩu mới</label>
+            <input style="height: '35px'" type="text" class="form-control form-control-lg" id="newPassword" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-5 h-50">
+            <label htmlFor="reNewPassword" class="form-label">Nhập lại mật khẩu mới</label>
+            <input style="height: '35px'" type="text" class="form-control form-control-lg" id="reNewPassword"  />
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-5 h-50">
+            <!-- <h3 class="text-danger">{!equal && "Mật khẩu mới chưa trùng khớp"}</h3> -->
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-info btn-lg mt-3">Lưu thay đổi</button>
+</form>

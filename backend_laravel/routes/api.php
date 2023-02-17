@@ -18,4 +18,6 @@ Route::post('/signup', [\App\Http\Controllers\api\UserController::class, 'regist
 
 Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']);
 
+Route::post('/images', [\App\Http\Controllers\api\ImageController::class, 'uploadFile']);
 
+Route::get('/images/{fileName}', [\App\Http\Controllers\api\ImageController::class, 'getImage']);
