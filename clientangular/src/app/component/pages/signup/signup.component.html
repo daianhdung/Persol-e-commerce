@@ -1,0 +1,102 @@
+<form [formGroup]="formData">
+  <a class="d-flex justify-content-center" routerLink="/home">
+    <img width="50" height="50" src="/assets/img/persol.jpg" alt="" />
+  </a>
+  <div class="row justify-content-center my-3 text-white">Signup</div>
+
+  <!-- Username input -->
+  <div class="form-outline mb-4">
+    <div
+      *ngIf="
+        formData.get('fullname')?.touched &&
+        formData.get('fullname')?.hasError('required')
+      "
+    >
+      <span class="text-danger">Username is required</span>
+    </div>
+    <input type="text" formControlName="fullname" class="form-control" />
+    <label class="form-label" for="registerUsername">Username</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <div
+      *ngIf="
+        formData.get('email')?.touched &&
+        formData.get('email')?.hasError('required')
+      "
+    >
+      <span class="text-danger">Email is required</span>
+    </div>
+    <input type="email" formControlName="email" class="form-control" />
+    <label class="form-label" for="registerEmail">Email</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <div
+      *ngIf="
+        formData.get('password')?.touched &&
+        formData.get('password')?.hasError('required')
+      "
+    >
+      <span class="text-danger">Password is required</span>
+    </div>
+    <div
+      *ngIf="
+        formData.get('password')?.touched &&
+        formData.get('password')?.hasError('minlength')
+      "
+    >
+      <span class="text-danger">Password must be at least 6 characters</span>
+    </div>
+    <input type="password" formControlName="password" class="form-control" />
+    <label class="form-label" for="registerPassword">Password</label>
+  </div>
+
+  <!-- Repeat Password input -->
+  <div class="form-outline mb-4">
+    <div
+      *ngIf="
+        formData.get('repassword')?.touched &&
+        formData.get('repassword')?.hasError('required')
+      "
+    >
+      <span class="text-danger">RePassword is required</span>
+    </div>
+    <input type="password" formControlName="repassword" class="form-control" />
+    <label class="form-label" for="registerRepeatPassword"
+      >Repeat password</label
+    >
+  </div>
+
+  <div class="text-danger" *ngIf="formData.hasError('required', 'check')">
+    Please accept the terms and conditions
+  </div>
+  <!-- Checkbox -->
+  <div class="form-check d-flex justify-content-center mb-4">
+    <input
+      class="form-check-input me-2"
+      type="checkbox"
+      value=""
+      formControlName="check"
+      aria-describedby="registerCheckHelpText"
+    />
+    <label class="form-check-label" for="registerCheck">
+      I have read and agree to the terms
+    </label>
+  </div>
+
+  <!-- Submit button -->
+  <button
+    (click)="submitForm()"
+    [disabled]="!isFormValid()"
+    type="submit"
+    class="btn btn-primary px-4"
+  >
+    Sign in
+  </button>
+  <div class="text-center">
+    <p>Have account? <a class="text-danger" routerLink="/login">Login</a></p>
+  </div>
+</form>

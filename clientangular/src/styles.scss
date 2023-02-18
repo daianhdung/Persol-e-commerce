@@ -1,0 +1,44 @@
+//Admin
+@import "@coreui/coreui/scss/coreui";
+
+@import "./scss/variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import styles with default layout.
+// @import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+// perfect scrollbar theming for use with [perfectScrollbar] directive
+//@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+@import "./scss/layout";
+
+
+// Some temp fixes
+@import "./scss/fixes";
+
+// Prism.js
+@import "./scss/examples";
+
+// If you want to add something do it here
+@import "./scss/custom";
+
+
+
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+/* Importing Bootstrap SCSS file. */
+@import 'ngx-toastr/toastr';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// boostrap 5
+@import 'ngx-toastr/toastr-bs5-alert';
+
+
