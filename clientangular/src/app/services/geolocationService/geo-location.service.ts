@@ -10,19 +10,19 @@ import { from, Observable } from 'rxjs';
 export class GeoLocationService {
   constructor(private http: HttpClient) {}
 
-  getPosition(): Observable<GeolocationPosition> {
-    return new Observable((observer) => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          observer.next(position);
-          observer.complete();
-        },
-        (error) => observer.error(error)
-      );
-    });
-  }
-  getAddress(latitude: number, longitude: number): Observable<any> {
-    const url = `https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?lat=${latitude}&lng=${longitude}`;
+  // getPosition(): Observable<GeolocationPosition> {
+  //   return new Observable((observer) => {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         observer.next(position);
+  //         observer.complete();
+  //       },
+  //       (error) => observer.error(error)
+  //     );
+  //   });
+  // }
+  getAddress(address: string): Observable<any> {
+    const url = `https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?address=${address}`;
   
     const headers = {
       'X-RapidAPI-Key': '1993b319a6msh6f5beffce936a34p18bf6bjsnada4e78e6c74',
