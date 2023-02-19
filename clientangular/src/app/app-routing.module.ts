@@ -11,8 +11,10 @@ import { ListProductComponent } from './component/pages/admin/admin-product/list
 import { UserCreateComponent } from './component/pages/admin/admin-user/user-create/user-create.component';
 import { UserListComponent } from './component/pages/admin/admin-user/user-list/user-list.component';
 import { AdmindetailComponent } from './component/pages/admin/admindetail/admindetail.component';
+import { ContactComponent } from './component/pages/contact/contact.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
 import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
+import { ProductComponent } from './component/pages/product/product.component';
 import { ProfileComponent } from './component/pages/profile/profile.component';
 import { SignupComponent } from './component/pages/signup/signup.component';
 
@@ -32,6 +34,8 @@ const routes: Routes = [
           ),
       },
       { path: 'detail', component: DetailComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'product', component: ProductComponent }
     ],
   },
   //Home Routes

@@ -21,7 +21,6 @@ CREATE TABLE `user` (
 CREATE TABLE `category` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL
-  
 );
 
 CREATE TABLE `brand` (
