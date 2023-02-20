@@ -47,6 +47,11 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Mail',
+    url: '/admin-mail',
+    iconComponent: { name: 'cil-envelope-closed' },
+  },
+  {
     name: 'Account',
     title: true
   },

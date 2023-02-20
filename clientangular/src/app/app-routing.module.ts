@@ -6,11 +6,12 @@ import { AdminlayoutComponent } from './component/layout/admin/adminlayout/admin
 import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/authenlayout.component';
 import { DefaultlayoutComponent } from './component/layout/default/defaultlayout/defaultlayout.component';
 import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
+import { ListMailComponent } from './component/pages/admin/admin-mail/list-mail/list-mail.component';
+import { MailDetailComponent } from './component/pages/admin/admin-mail/mail-detail/mail-detail.component';
 import { CreateProductComponent } from './component/pages/admin/admin-product/create-product/create-product.component';
 import { ListProductComponent } from './component/pages/admin/admin-product/list-product/list-product.component';
 import { UserCreateComponent } from './component/pages/admin/admin-user/user-create/user-create.component';
 import { UserListComponent } from './component/pages/admin/admin-user/user-list/user-list.component';
-import { AdmindetailComponent } from './component/pages/admin/admindetail/admindetail.component';
 import { ContactComponent } from './component/pages/contact/contact.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
 import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
@@ -67,13 +68,14 @@ const routes: Routes = [
             (m) => m.AdminModule
           ),
       },
-      { path: 'admin-detail', component: AdmindetailComponent },
       { path: 'admin-dashboard', component: AdminDashboardComponent },
       { path: 'admin-user-list', component: UserListComponent },
       { path: 'admin-product-list', component: ListProductComponent },
       { path: 'admin-user-create', component: UserCreateComponent },
       { path: 'admin-product-create', component: CreateProductComponent },
-      { path: 'admin-profile', component: ProfileComponent }
+      { path: 'admin-profile', component: ProfileComponent },
+      { path: 'admin-mail', component: ListMailComponent },
+      { path: 'admin-mail/:id', component: MailDetailComponent },
     ],
   },
   {

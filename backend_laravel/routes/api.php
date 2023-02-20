@@ -36,5 +36,8 @@ Route::delete('/deleteUser/{id}', [\App\Http\Controllers\api\ProductsController:
 //get brand by category
 Route::delete('/getBrand/{id}', [\App\Http\Controllers\api\getBrandbyCategoryId::class, 'getBrandbyCategoryId']);
 
+//mail
+Route::get('/mails', [\App\Http\Controllers\api\ContactController::class, 'getAllMail']);
 Route::post('/mail', [\App\Http\Controllers\api\ContactController::class, 'sendMail']);
+Route::delete('/mail/{id}', [\App\Http\Controllers\api\ContactController::class, 'deteleMail']);
 

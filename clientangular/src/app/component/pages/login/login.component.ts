@@ -4,7 +4,7 @@ import { LoginService } from 'app/services/authService/login.service';
 import { CookieService } from 'app/services/storageService/cookie.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginComponent {
   })
 
   constructor(private formBuilder: FormBuilder, private login: LoginService, private cookieService: CookieService,
-    private toastr: ToastrService, private router: Router) {}
+    private toastr: ToastrService, private router: Router, private spinner: NgxSpinnerService) {}
 
   public isFormValid() {
     return this.formData.valid;
@@ -34,6 +34,7 @@ export class LoginComponent {
 
 
   public submitForm(): void {
+    this.spinner.show();
     if (this.formData.valid) {
       const { email, password } = this.formData.value;
       if (email && password) {
@@ -54,7 +55,8 @@ export class LoginComponent {
           .catch((error) => {
             console.error(error);
             this.toastr.error(error, 'Lỗi')
-          });
+          })
+          .finally(() => this.spinner.hide())
       }
     }
   }

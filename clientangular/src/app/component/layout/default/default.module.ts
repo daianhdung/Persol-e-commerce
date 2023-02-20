@@ -7,6 +7,7 @@ import { DetailComponent } from '../../pages/detail/detail.component';
 import { CarouselComponent } from '../component/carousel/carousel/carousel.component';
 import { ContactComponent } from 'app/component/pages/contact/contact.component';
 import { ProductComponent } from 'app/component/pages/product/product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProductComponent } from 'app/component/pages/product/product.component'
   imports: [
     CommonModule,
     DefaultRoutingModule,
-    CarouselComponent
+    CarouselComponent,
+    ReactiveFormsModule
   ]
 })
 export class DefaultModule { }
