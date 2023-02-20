@@ -32,5 +32,9 @@ Route::get('/images/{fileName}', [\App\Http\Controllers\api\ImageController::cla
 //user api
 Route::delete('/deleteUser/{id}', [\App\Http\Controllers\api\ProductsController::class, 'deleteUser']);
 
-//mail
+
+//get brand by category
+Route::delete('/getBrand/{id}', [\App\Http\Controllers\api\getBrandbyCategoryId::class, 'getBrandbyCategoryId']);
+
 Route::post('/mail', [\App\Http\Controllers\api\ContactController::class, 'sendMail']);
+
