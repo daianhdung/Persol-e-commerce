@@ -19,7 +19,5 @@ class Product extends Model{
         'category_id',
         'brand_id',
     ];
-
- 
 }
 ?>

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { AdminhomeComponent } from 'app/component/pages/admin/adminhome/adminhome.component';
-import { AdmindetailComponent } from 'app/component/pages/admin/admindetail/admindetail.component';
 import { AdminDashboardComponent } from 'app/component/pages/admin/admin-dashboard/admin-dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -28,14 +26,14 @@ import { UpdateProductComponent } from 'app/component/pages/admin/admin-product/
 import { UserCreateComponent } from 'app/component/pages/admin/admin-user/user-create/user-create.component';
 import { UserUpdateComponent } from 'app/component/pages/admin/admin-user/user-update/user-update.component';
 import { ProfileComponent } from 'app/component/pages/profile/profile.component';
+import { ListMailComponent } from 'app/component/pages/admin/admin-mail/list-mail/list-mail.component';
+import { MailDetailComponent } from 'app/component/pages/admin/admin-mail/mail-detail/mail-detail.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AdminhomeComponent,
-    AdmindetailComponent,
     AdminDashboardComponent,
     UserListComponent,
     UserCreateComponent,
@@ -43,7 +41,9 @@ import { ProfileComponent } from 'app/component/pages/profile/profile.component'
     ListProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListMailComponent,
+    MailDetailComponent
   ],
   imports: [
     CommonModule,

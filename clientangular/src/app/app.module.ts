@@ -48,12 +48,22 @@ import { IconModule } from '@coreui/icons-angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
+
+interface NgxSpinnerConfig {
+  type?: string;
+}
+export function tokenGetter(this: any) {
+  console.log(this.CookieService.get('jwtToken'));
+  return this.CookieService.get('jwtToken');
+}
 
 @NgModule({
   declarations: [
@@ -65,8 +75,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AdminheaderComponent,
     AdminfooterComponent,
     AuthenlayoutComponent,
-    PageNotFoundComponent
-    
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,9 +83,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FontAwesomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    JwtModule.forRoot({}),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:8000"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
     NgbModule,
     HttpClientModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
 
     //Admin Module
     AvatarModule,

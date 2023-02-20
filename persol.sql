@@ -1,6 +1,10 @@
 create database persol;
 use persol;
 
+-- Mail 
+-- username: persol.project123@gmail.com
+-- password: persol123
+
 CREATE TABLE `role` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,

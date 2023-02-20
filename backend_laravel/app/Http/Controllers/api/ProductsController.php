@@ -9,7 +9,6 @@ class ProductsController extends ResponseController{
     public function show(){
         $product = Product::all();
         return $this->successResponse($product,'thanh cong');
-
     }
 
     public function showbyId($id) {
@@ -38,7 +37,7 @@ class ProductsController extends ResponseController{
 
 
 
-    public function updateproduct(Request $request, $id){ 
+    public function updateproduct(Request $request, $id){
         $product= Product::find($id);
         if(is_null($product)) {
             return response()->json(['message' => 'Product not found']);
@@ -48,6 +47,6 @@ class ProductsController extends ResponseController{
 
     }
 
-    
+
 
 }

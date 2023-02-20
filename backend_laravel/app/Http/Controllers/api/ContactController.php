@@ -23,9 +23,25 @@ class ContactController extends ResponseController
 
         try {
             Mail::to($request->email)->send(new PersolMail($data));
+            $request->fullname = $request->firstName . ' ' . $request->lastName;
+            \App\Models\Mail::create($request->all());
             return $this->successResponse($data, "Thành công");
         }catch (Exception $exception){
             return $this->errorResponse($exception, 'Thất bại');
         }
+    }
+
+    public function getAllMail(){
+        $mails = \App\Models\Mail::all();
+        return $this->successResponse($mails,'Thành công');
+    }
+
+    public function deteleMail($id){
+        $mails = \App\Models\Mail::find($id);
+        if(is_null($mails)) {
+            return response()->json(['message' => 'Mail not found']);
+        }
+        $mails->delete();
+        return $this->successResponse($mails,'Thành công');
     }
 }

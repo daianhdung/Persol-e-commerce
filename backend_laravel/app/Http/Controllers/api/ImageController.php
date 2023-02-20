@@ -25,7 +25,6 @@ class ImageController extends ResponseController
         if(!Storage::exists($path)){
             return $this->errorResponse('Image not found');
         }
-        $url = Storage::url($path);
         $image = Storage::get($path);
         return response($image, 200)->header('Content-Type', Storage::mimeType($path));
     }
