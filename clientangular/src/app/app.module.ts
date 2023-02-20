@@ -65,7 +65,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AdminheaderComponent,
     AdminfooterComponent,
     AuthenlayoutComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
     
   ],
   imports: [

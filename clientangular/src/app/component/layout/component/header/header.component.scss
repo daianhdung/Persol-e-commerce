@@ -9,3 +9,24 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+.navitem_hover {
+  a {
+    &:hover{
+      color: #2a78c7;
+    }
+  }
+}
+
+.navitem_dropdown_hover {
+  a {
+    &:hover{
+      color: #2a78c7;
+    }
+  }
+  .dropdown-item {
+    &:hover{
+      background: #e4dec3;
+    }
+  }
+}
