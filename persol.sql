@@ -95,6 +95,16 @@ CREATE TABLE `product_order` (
   PRIMARY KEY (`order_id`, `product_id`)
 );
 
+CREATE TABLE mail (
+  id int auto_increment,
+  fullname varchar(50),
+  email varchar(50),
+  phone varchar(20),
+  message text,
+  createdate datetime default now(),
+  PRIMARY KEY (id)
+);
+
 ALTER TABLE `user` ADD FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 
 ALTER TABLE `product` ADD FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
@@ -124,13 +134,13 @@ INSERT INTO `user` (`id`, `email`, `password`, `fullname`, `phone`, `address`, `
 
 
 /*brand*/
-INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Chema','Chemi.webp');
+INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Chemi','Chemi.webp');
 INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Polar','Polar.webp');
 INSERT INTO `brand` (`id`, `name`, image ) VALUES (NULL, 'Rayban' , 'rayban.webp');
 INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Prada','Prada.webp');
 INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Hoya','Hoya.webp');
 INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Element', 'Elements.webp' );
-INSERT INTO `brand` (`id`, `name`, image ) VALUES (NULL, 'Oakalay', 'Oakley.webp' );
+INSERT INTO `brand` (`id`, `name`, image ) VALUES (NULL, 'Oakley', 'Oakley.webp' );
 INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Coach','Coach.webp');
 INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Micheals Kors','MK.webp');
 
@@ -139,17 +149,25 @@ INSERT INTO `brand` (`id`, `name`, image) VALUES (NULL, 'Micheals Kors','MK.webp
 
 /*category*/
 
-INSERT INTO category(name) VALUES ("Kính mát");
-INSERT INTO category(name)  VALUES ("Gọng kính");
-INSERT INTO category(name) VALUES ("Tròng kính");
-
-
-insert into category_brand(category_id,brand_id) values (1,1);
-insert into category_brand(category_id,brand_id) values (1,2);
-insert into category_brand(category_id,brand_id) values (2,2);
+INSERT INTO category(name)  VALUES ("Glasses");
+INSERT INTO category(name) VALUES ("Lenses");
+INSERT INTO category(name) VALUES ("Sunglasses");
 
 
 
+insert into category_brand(category_id,brand_id) values (1,3);
+insert into category_brand(category_id,brand_id) values (1,4);
+insert into category_brand(category_id,brand_id) values (1,8);
+
+insert into category_brand(category_id,brand_id) values (2,5);
+insert into category_brand(category_id,brand_id) values (2,6);
+insert into category_brand(category_id,brand_id) values (2,1);
+
+insert into category_brand(category_id,brand_id) values (3,3);
+insert into category_brand(category_id,brand_id) values (3,8);
+insert into category_brand(category_id,brand_id) values (3,4);
+insert into category_brand(category_id,brand_id) values (3,2);
+insert into category_brand(category_id,brand_id) values (3,9);
 
 /*Product*/
 INSERT INTO `product` (`id`, `name`, `main_image`, `amount_of_sold`, `price`, `category_id`, `brand_id`) VALUES (1, 'Chemi U2', 'ChemiU2.png', 1, 302000, 3, 1);
@@ -191,6 +209,3 @@ insert into image_product (id, name , product_id) values ( 19,  'MICHAEL-KORS-10
 insert into image_product (id, name , product_id) values ( 20,  'MICHAEL-KORS-1003-1001-6G58CN-scaled.webp'  ,13);
 insert into image_product (id, name , product_id) values ( 21,  'michael-kors-3005dt-102554cn-3.webp'  ,14);
 insert into image_product (id, name , product_id) values ( 22,  'michael-kors-3005dt-102554cn.webp'  ,14);
-
-
-

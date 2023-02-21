@@ -13,9 +13,11 @@ class Category extends Model{
     protected $fillable = [
         'id',
         'name',
-        
+
     ];
 
- 
+    public function brands(){
+        return $this->belongsToMany(Brand::class, 'category_brand');
+    }
 }
 ?>

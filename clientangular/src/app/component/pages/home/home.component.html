@@ -1,16 +1,111 @@
-<div style="max-width: 1400px;" class="container-fluid body">
+<div style="max-width: 1400px" class="container-fluid body">
   <app-carousel></app-carousel>
-  
+  <swiper
+    [slidesPerView]="10"
+    [spaceBetween]="10"
+    [navigation]="true"
+    [scrollbar]="{ draggable: true }"
+    [loop]="true"
+    [autoplay]="{ delay: 2000 }"
+    [loopFillGroupWithBlank]="true"
+    class="swiper_custom"
+  >
+    <ng-template swiperSlide *ngFor="let item of listBrand">
+      <img
+        style="object-fit: contain"
+        width="100"
+        height="90"
+        [src]="imgBrandAPI + item.image"
+        alt=""
+      />
+    </ng-template>
+  </swiper>
 </div>
 
-<div>
+<div class="mt-5">
+  <div style="transform: rotate(180deg)">
+    <img src="/assets/img/brand/test.svg" alt="" />
+  </div>
+  <div class="separate" style="background: #f5f4f4;">
+    <a routerLink="/product"><h1 class="title mb-3">Top Selling Products</h1></a>
+    <div>
+      <div class="wrap_swiper">
+        <div class="top_branch_slide">
+          <swiper
+            [slidesPerView]="10"
+            [spaceBetween]="10"
+            [navigation]="true"
+            [scrollbar]="{ draggable: true }"
+            [loop]="true"
+            [autoplay]="{ delay: 2000 }"
+            [loopFillGroupWithBlank]="true"
+            class="swiper_custom"
+          >
+            <ng-template swiperSlide>
+              <img style="object-fit: contain" width="100" height="90" alt="" />
+            </ng-template>
+          </swiper>
+        </div>
+      </div>
+    </div>
+  </div>
   <img src="/assets/img/brand/test.svg" alt="" />
 </div>
 
-<div style="transform: rotate(180deg); background-color: #f8f8f8">
-  <img
-    style="background-color: #f2eaea"
-    src="/assets/img/brand/test.svg"
-    alt=""
-  />
+
+<div class="mt-5" style="background: #fff;">
+  <div class="separate">
+    <a routerLink="/product"><h1 class="title mb-3">Featured Products</h1></a>
+    <div>
+      <div class="wrap_swiper">
+        <div class="top_branch_slide">
+          <swiper
+            [slidesPerView]="10"
+            [spaceBetween]="10"
+            [navigation]="true"
+            [scrollbar]="{ draggable: true }"
+            [loop]="true"
+            [autoplay]="{ delay: 2000 }"
+            [loopFillGroupWithBlank]="true"
+            class="swiper_custom"
+          >
+            <ng-template swiperSlide>
+              <img style="object-fit: contain" width="100" height="90" alt="" />
+            </ng-template>
+          </swiper>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="mt-5">
+  <div style="transform: rotate(180deg)">
+    <img src="/assets/img/brand/test.svg" alt=""/>
+  </div>
+  <div class="separate" style="background: #f5f4f4;">
+    <a routerLink="/product"><h1 class="title mb-3">Today's Best Deals</h1></a>
+    <div>
+      <div class="wrap_swiper">
+        <div class="top_branch_slide">
+          <swiper
+            [slidesPerView]="10"
+            [spaceBetween]="10"
+            [navigation]="true"
+            [scrollbar]="{ draggable: true }"
+            [loop]="true"
+            [autoplay]="{ delay: 2000 }"
+            [loopFillGroupWithBlank]="true"
+            class="swiper_custom"
+          >
+            <ng-template swiperSlide>
+              <img style="object-fit: contain" width="100" height="90" alt="" />
+            </ng-template>
+          </swiper>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="/assets/img/brand/test.svg" alt="" />
 </div>

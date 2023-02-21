@@ -16,6 +16,8 @@ class Brand extends Model{
         'image',
     ];
 
- 
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'category_brand');
+    }
 }
 ?>

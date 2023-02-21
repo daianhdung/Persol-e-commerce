@@ -10,9 +10,10 @@ class ImageController extends ResponseController
 {
     //
     public function uploadFile(Request $request){
+        $category = $request->category;
         $file = $request->file('image');
         $fileName = $file->getClientOriginalName();
-        $path = $file->storeAs('public/images', $fileName);
+        $path = $file->storeAs('public/'.$category. '/images', $fileName);
 
         return response()->json([
             'path' => $path,
@@ -20,8 +21,8 @@ class ImageController extends ResponseController
         ]);
     }
 
-    public function getImage($fileName){
-        $path = "public/images/{$fileName}";
+    public function getImage($category, $fileName){
+        $path = "public/images/{$category}/{$fileName}";
         if(!Storage::exists($path)){
             return $this->errorResponse('Image not found');
         }

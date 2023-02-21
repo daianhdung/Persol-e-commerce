@@ -53,13 +53,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
 
-interface NgxSpinnerConfig {
-  type?: string;
-}
 export function tokenGetter(this: any) {
   console.log(this.CookieService.get('jwtToken'));
   return this.CookieService.get('jwtToken');
@@ -93,6 +91,7 @@ export function tokenGetter(this: any) {
     NgbModule,
     HttpClientModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+
 
     //Admin Module
     AvatarModule,
