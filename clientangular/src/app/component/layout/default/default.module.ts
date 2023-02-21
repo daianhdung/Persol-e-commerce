@@ -8,7 +8,7 @@ import { CarouselComponent } from '../component/carousel/carousel/carousel.compo
 import { ContactComponent } from 'app/component/pages/contact/contact.component';
 import { ProductComponent } from 'app/component/pages/product/product.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DefaultRoutingModule,
     CarouselComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule,
   ]
 })
 export class DefaultModule { }

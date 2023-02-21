@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import json from "assets/slider/image.json"
+import json from 'assets/slider/image.json';
 
 import {
   NgbCarousel,
@@ -9,6 +9,8 @@ import {
   NgbSlideEvent,
   NgbSlideEventSource,
 } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @Component({
   selector: 'app-carousel',

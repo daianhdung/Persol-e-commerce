@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-
+  
+  ngOnInit(){
+    window.scrollTo(0, 0);
+  }
 }

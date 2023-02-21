@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from 'app/services/authService/login.service';
+import { BrandService } from 'app/services/brandService/brand.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -10,32 +12,26 @@ export class HeaderComponent {
   navHead = [
     {
       id: '1',
-      name: 'Gòng kính',
-      brands: [
-        { id: '1', name: 'Gòng kính' },
-        { id: '2', name: 'Gòng kính' },
-        { id: '3', name: 'Gòng kính' },
-        { id: '4', name: 'Gòng kính' },
-        { id: '5', name: 'Gòng kính 2' },
-        { id: '5', name: 'Gòng kính 2' },
-        { id: '5', name: 'Gòng kính2 ' },
-        { id: '5', name: 'Gòng kính2 ' },
-        { id: '5', name: 'Gòng kính2 ' },
-      ],
+      name: 'Glasses',
+      brands: [{ name: '', image: '' }],
     },
     {
       id: '2',
-      name: 'Gòng kính 2',
-      brands: [],
+      name: 'Lenses',
+      brands: [{ name: '', image: '' }],
     },
     {
       id: '3',
-      name: 'Gòng kính 3',
-      brands: [],
+      name: 'Sunglasses',
+      brands: [{ name: '', image: '' }],
     },
   ];
+  imgBrandAPI = environment.apiUrl + 'images/brand/';
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private brandService: BrandService
+  ) {}
 
   isAuthenticated() {
     return this.loginService.isUserAuthenticated();
@@ -47,5 +43,17 @@ export class HeaderComponent {
 
   logout() {
     this.loginService.logout();
+  }
+
+  ngOnInit() {
+    this.navHead.map((item) => {
+      this.brandService.getBrandsByCategoryId(item.id).subscribe({
+        next: (repsonse) => {
+          item.brands = repsonse.data;
+          console.log(this.navHead);
+        },
+        error: (error) => console.log(error),
+      });
+    });
   }
 }

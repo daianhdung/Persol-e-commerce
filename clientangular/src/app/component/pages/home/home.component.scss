@@ -9,3 +9,38 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+.swiper_custom .swiper-button-prev {
+  color: red;
+}
+.swiper-button-prev {
+  color: red;
+}
+
+.separate {
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.top_branch_slide {
+  width: 1280px;
+  height: 450px;
+  padding: 20px;
+}
+
+
+
+.wrap_swiper {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #5b5b5b;
+  &:hover {
+      color: #2ac37d;
+  }
+}
