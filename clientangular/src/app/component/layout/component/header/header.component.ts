@@ -50,7 +50,6 @@ export class HeaderComponent {
       this.brandService.getBrandsByCategoryId(item.id).subscribe({
         next: (repsonse) => {
           item.brands = repsonse.data;
-          console.log(this.navHead);
         },
         error: (error) => console.log(error),
       });
