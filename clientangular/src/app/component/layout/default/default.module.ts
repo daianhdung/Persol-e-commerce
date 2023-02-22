@@ -9,6 +9,8 @@ import { ContactComponent } from 'app/component/pages/contact/contact.component'
 import { ProductComponent } from 'app/component/pages/product/product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
+import { SidebarFilterComponent } from '../component/sidebar-filter/sidebar-filter.component';
+import { ListItemComponent } from '../component/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { SwiperModule } from 'swiper/angular';
     DetailComponent,
     ContactComponent,
     ProductComponent,
+    SidebarFilterComponent,
+    ListItemComponent,
   ],
   imports: [
     CommonModule,

@@ -25,16 +25,14 @@ Route::delete('/delete/{id}', [\App\Http\Controllers\api\ProductsController::cla
 Route::post('/add', [\App\Http\Controllers\api\ProductsController::class, 'addproduct']);
 Route::put('/update/{id}', [\App\Http\Controllers\api\ProductsController::class, 'updateproduct']);
 
+Route::post('/product-filter', [\App\Http\Controllers\api\ProductsController::class, 'paginationTest']);
+
 //image api
 Route::post('/images', [\App\Http\Controllers\api\ImageController::class, 'uploadFile']);
 Route::get('/images/{category}/{fileName}', [\App\Http\Controllers\api\ImageController::class, 'getImage']);
 
 //user api
 Route::delete('/deleteUser/{id}', [\App\Http\Controllers\api\ProductsController::class, 'deleteUser']);
-
-
-//get brand by category
-Route::delete('/getBrand/{id}', [\App\Http\Controllers\api\getBrandbyCategoryId::class, 'getBrandbyCategoryId']);
 
 //mail
 Route::get('/mails', [\App\Http\Controllers\api\ContactController::class, 'getAllMail']);
@@ -45,4 +43,4 @@ Route::delete('/mail/{id}', [\App\Http\Controllers\api\ContactController::class,
 Route::get('/brands', [\App\Http\Controllers\api\BrandController::class, 'getAllBrand']);
 Route::get('/categories/{idCate}/brands', [\App\Http\Controllers\api\BrandController::class, 'getAllBrandByIdCategory']);
 //Category
-
+Route::get('/categories', [\App\Http\Controllers\api\CategoryController::class, 'getAllCategory']);
