@@ -34,7 +34,7 @@
           <ul class="dropdown-menu">
             <ng-container *ngIf="item.brands.length > 0">
               <li *ngFor="let brand of item.brands">
-                <a routerLink="/product" class="dropdown-item" href="#">
+                <a (click)="filterBrandByCate(item.id, brand.id)" routerLink="/product" class="dropdown-item" href="#">
                   <img style="object-fit: contain;" width="50" height="50" [src]="imgBrandAPI + brand.image" alt=""> {{brand.name}}
                 </a>
               </li>

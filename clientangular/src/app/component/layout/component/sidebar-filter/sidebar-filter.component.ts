@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { BrandService } from 'app/services/brandService/brand.service';
 import { CategoryService } from 'app/services/categoryService/category.service';
+import { FilterService } from 'app/services/productService/filter.service';
 import { environment } from 'environments/environment';
+import { forkJoin, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar-filter',
@@ -12,30 +14,41 @@ export class SidebarFilterComponent {
 
   listBrand: any[] = []
   listCate: any[] = []
+
+  listCheckCategoryIds : any[] = []
+  listCheckBrandIds : any[] = []
  
   imgBrandAPI = environment.apiUrl + 'images/brand/';
 
-  constructor(private brandService: BrandService, private categoryService: CategoryService){}
+  constructor(private brandService: BrandService, private categoryService: CategoryService, private filterService: FilterService){}
+
+  handleCheckCategoryId(id : any){
+    this.filterService.handleCheckCategory(id)
+  }
+
+  handleCheckBrandId(id : any){
+    this.filterService.handleCheckBrand(id)
+  }
+
 
   ngOnInit(){
-    this.brandService.getAllBrand().subscribe({
-      next : (reponse) => {
-        this.listBrand = reponse.data
-        console.log(this.listBrand);
-      },
-      error: (repsonse) => {
-        console.log(repsonse.message);
-      }
-    })
+    console.log(this.filterService.request);
+    this.listCheckCategoryIds = this.filterService.request.categoryIds
+    this.listCheckBrandIds = this.filterService.request.brandIds
 
-    this.categoryService.getAllCategory().subscribe({
-      next : (reponse) => {
-        this.listCate = reponse.data
-        console.log(this.listCate);
+    // Multi request at once and wait for all of them to complete
+    forkJoin([
+      this.brandService.getAllBrand(),
+      this.categoryService.getAllCategory()
+    ]).subscribe({
+      next: ([brandResponse, categoryResponse]) => {
+        this.listBrand = brandResponse.data
+        this.listCate = categoryResponse.data
       },
-      error: (repsonse) => {
-        console.log(repsonse.message);
+      error: (response) => {
+        console.log(response.message);
       }
     })
   }
+
 }

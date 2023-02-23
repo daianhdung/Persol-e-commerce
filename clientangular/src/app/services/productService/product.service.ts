@@ -13,7 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProductByFilter(data : any) :Observable<any>{
-
+    
     return this.http.post(this.productAPI + "-filter", data)
   }
 }
