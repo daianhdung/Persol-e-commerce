@@ -16,7 +16,10 @@
                 background-color: rgba(235, 237, 239, 1);
               "
             >
-              <select class="w-25 form-select wm-20">
+              <select
+                (change)="changeSort($event)"
+                class="w-25 form-select wm-20"
+              >
                 <option *ngFor="let item of sortList" [value]="item.name">
                   {{ item.lable }}
                 </option>
@@ -25,26 +28,21 @@
           </div>
 
           <!-- Product -->
-          <div
-            class="product_list p-3 mt-3"
-            style="width: 100%;"
-          >
+          <div class="product_list p-3 mt-3" style="width: 100%">
             <div class="wrapper_product">
               <!-- <div class="inner_product"> -->
               <div class="row w-100 mt-3">
                 <div class="col-md-3 mb-5" *ngFor="let item of listProduct">
                   <div class="card">
-                    <a>
+                    <a routerLink="/product">
                       <div class="card-img">
-                        <img
-                          src="https://matkinh53.com/wp-content/uploads/2023/02/RAYBAN-4187F-6075-6G54IT2-scaled.webp"
-                        />
+                        <img [src]="imgProductAPI + item.main_image" />
                       </div>
                       <div class="card-title">
-                        <h4>{{item.name}}</h4>
+                        <h4>{{ item.name }}</h4>
                       </div>
                       <div class="card-price p-2 fs-5 fw-bold">
-                        <span>{{item.price | number: '1.0-3'}}₫</span>
+                        <span>{{ item.price | number : "1.0-3" }}₫</span>
                       </div>
                     </a>
                   </div>
@@ -55,9 +53,35 @@
                   <div class="col-md-2">
                     <nav aria-label="Page navigation">
                       <ul class="pagination">
-                        <li class="page-item" *ngFor="let item of pagination let first = first; let last = last;">
-                          <a class="page-link" [class.disabled]="!item.url" aria-label="Next">
-                            <span aria-hidden="true" [innerHTML]="first ? '&laquo;' : (last ? '&raquo;' : item.label)"></span>
+                        <li
+                          class="page-item"
+                          *ngFor="
+                            let item of pagination;
+                            let i = index;
+                            let first = first;
+                            let last = last
+                          "
+                          [class.disabled]="!item.url"
+                          [id]="
+                            first
+                              ? (i + 1).toString()
+                              : last
+                              ? (i - 1).toString()
+                              : i.toString()
+                          "
+                          (click)="changePagination($event)"
+                        >
+                          <a
+                            [class.bg-info]="item.active"
+                            [class.text-white]="item.active"
+                            class="page-link"
+                            style="cursor: pointer"
+                          >
+                            <span
+                              [innerHTML]="
+                                first ? '&laquo' : last ? '&raquo' : item.label
+                              "
+                            ></span>
                           </a>
                         </li>
                       </ul>

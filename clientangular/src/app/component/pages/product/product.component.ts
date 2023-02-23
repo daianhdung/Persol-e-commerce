@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { BrandService } from 'app/services/brandService/brand.service';
+import { FilterService } from 'app/services/productService/filter.service';
 import { ProductService } from 'app/services/productService/product.service';
 import { environment } from 'environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -12,46 +15,77 @@ export class ProductComponent {
   sortList = [
     {
       name: 'az',
-      lable: 'Tên: A-Z',
+      lable: 'Name: A-Z',
     },
     {
       name: 'za',
-      lable: 'Tên: A-Z',
+      lable: 'Name: A-Z',
     },
     {
       name: 'ascPrice',
-      lable: 'Giá tăng dần',
+      lable: 'Ascending Price',
     },
     {
-      name: 'dscPrice',
-      lable: 'Giá giảm dần',
+      name: 'descPrice',
+      lable: 'Descending Price',
     },
   ];
 
-  data = {
-    keyword: '',
-    brandIds: [],
-    categoryIds: [],
-    sort: 'az',
-  };
+  pagination: any[] = [];
 
-  pagination : any[] = []
+  listProduct: any[] = [];
 
-  listProduct : any[] = []
+  imgProductAPI = environment.apiUrl + 'images/product/';
 
-  constructor(private productService: ProductService) {}
 
-  
+  constructor(
+    private productService: ProductService,
+    private filterService: FilterService,
+    private spinner: NgxSpinnerService
+  ) {}
+
+  private destroy$ = new Subject<void>();
+
+  changeSort(event: Event){
+    const sortValue = (event.target as HTMLSelectElement).value;
+    this.filterService.handleChangeSort(sortValue)
+  }
+
+  changePagination(event: Event){ 
+    window.scrollTo(0, 0);
+    const clickedElement = event.currentTarget as HTMLElement;
+    const pageValue = clickedElement.id;
+    this.filterService.handleChangePagination(pageValue)
+  }
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.productService.getProductByFilter(this.data).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.listProduct = response.data.data
-        this.pagination = response.data.links
-      },
-      error: error => console.log(error)
-    })
+    this.productService
+      .getProductByFilter(this.filterService.request)
+      .subscribe({
+        next: (response) => {
+          this.listProduct = response.data.data;
+          this.pagination = response.data.links;
+        },
+        error: (error) => console.log(error),
+      });
+
+    this.filterService.filterChanged
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((request) => {
+        this.productService.getProductByFilter(request).subscribe({
+          next: (repsonse) => {
+            this.listProduct = repsonse.data.data;
+            this.pagination = repsonse.data.links;
+          },
+          error: (error) => console.log(error),
+        });
+      });
+
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

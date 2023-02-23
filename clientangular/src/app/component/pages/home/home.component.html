@@ -11,13 +11,17 @@
     class="swiper_custom"
   >
     <ng-template swiperSlide *ngFor="let item of listBrand">
-      <img
-        style="object-fit: contain"
-        width="100"
-        height="90"
-        [src]="imgBrandAPI + item.image"
-        alt=""
-      />
+      <a (click)="handleCheckBrandId(item.id)"
+      routerLink="/product">
+        <img
+          
+          style="object-fit: contain"
+          width="100"
+          height="90"
+          [src]="imgBrandAPI + item.image"
+          alt=""
+        />
+      </a>
     </ng-template>
   </swiper>
 </div>
@@ -26,8 +30,10 @@
   <div style="transform: rotate(180deg)">
     <img src="/assets/img/brand/test.svg" alt="" />
   </div>
-  <div class="separate" style="background: #f5f4f4;">
-    <a routerLink="/product"><h1 class="title mb-3">Top Selling Products</h1></a>
+  <div class="separate" style="background: #f5f4f4">
+    <a routerLink="/product"
+      ><h1 class="title mb-3">Top Selling Products</h1></a
+    >
     <div>
       <div class="wrap_swiper">
         <div class="top_branch_slide">
@@ -52,8 +58,7 @@
   <img src="/assets/img/brand/test.svg" alt="" />
 </div>
 
-
-<div class="mt-5" style="background: #fff;">
+<div class="mt-5" style="background: #fff">
   <div class="separate">
     <a routerLink="/product"><h1 class="title mb-3">Featured Products</h1></a>
     <div>
@@ -79,12 +84,11 @@
   </div>
 </div>
 
-
 <div class="mt-5">
   <div style="transform: rotate(180deg)">
-    <img src="/assets/img/brand/test.svg" alt=""/>
+    <img src="/assets/img/brand/test.svg" alt="" />
   </div>
-  <div class="separate" style="background: #f5f4f4;">
+  <div class="separate" style="background: #f5f4f4">
     <a routerLink="/product"><h1 class="title mb-3">Today's Best Deals</h1></a>
     <div>
       <div class="wrap_swiper">

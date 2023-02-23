@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BrandService } from 'app/services/brandService/brand.service';
+import { FilterService } from 'app/services/productService/filter.service';
 import { environment } from 'environments/environment';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y ,Autoplay} from 'swiper';
 
@@ -18,7 +19,13 @@ export class HomeComponent {
 
   imgBrandAPI = environment.apiUrl + 'images/brand/';
 
-  constructor(private brandService: BrandService){}
+  listCheckBrandIds : any[] = []
+
+  constructor(private brandService: BrandService, private filterService: FilterService){}
+
+  handleCheckBrandId(id : any){
+    this.filterService.handleCheckBrand(id)
+  }
 
   ngOnInit(){
     this.brandService.getAllBrand().subscribe({
