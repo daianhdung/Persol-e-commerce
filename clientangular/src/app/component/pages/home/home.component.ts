@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BrandService } from 'app/services/brandService/brand.service';
 import { FilterService } from 'app/services/productService/filter.service';
 import { environment } from 'environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y ,Autoplay} from 'swiper';
 
 // install Swiper modules
@@ -21,7 +22,9 @@ export class HomeComponent {
 
   listCheckBrandIds : any[] = []
 
-  constructor(private brandService: BrandService, private filterService: FilterService){}
+  constructor(private brandService: BrandService, private filterService: FilterService, private spinner : NgxSpinnerService){
+    spinner.show()
+  }
 
   handleCheckBrandId(id : any){
     this.filterService.handleCheckBrand(id)
@@ -33,8 +36,10 @@ export class HomeComponent {
         this.listBrand = reponse.data
       },
       error: (repsonse) => {
-        console.log(repsonse.message);
-      }
+        console.log(repsonse.message)
+        this.spinner.hide()
+      },
+      complete: () => this.spinner.hide()
     })
   }
 }

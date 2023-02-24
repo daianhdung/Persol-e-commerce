@@ -1,27 +1,41 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from 'app/services/productService/product.service';
+import { environment } from 'environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
-// const observableA = new Observable((observer) => {
-//   const id = setInterval(() => {
-//     observer.next('Hello RxJS');
-//     observer.complete();
-//   }, 1000);
-//   return function unsubscribe() {
-//     clearInterval(id);
-//   };
-// });
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y} from 'swiper';
 
-//   observableA.subscribe({
-//   next: (val) => console.log(val),
-//   error: (error) => console.error(error),
-//   complete: () => console.log('complete'),
-// });
-
-// subscription.add(observable.subscribe(console.log))
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent {}
+export class DetailComponent {
+  id: any
+  product : any = {}
+
+  imgImageProductAPI = environment.apiUrl + 'images/product_image/';
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private spinner: NgxSpinnerService){
+    spinner.show()
+  }
+
+  ngOnInit(){
+    this.id = this.route.snapshot.paramMap.get('id')
+    this.productService.getProductById(this.id).subscribe({
+      next: response => {
+        this.product = response.data
+        console.log(response);
+      },
+      error: error => {
+        console.log(error)
+        this.spinner.hide()
+      },
+      complete: () => this.spinner.hide()
+    })
+  }
+}

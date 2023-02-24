@@ -34,8 +34,8 @@ export class ContactComponent {
 
   onSubmit() {
     this.isSubmitted = true;
-    this.spinner.show();
     if (this.formData.valid) {
+      this.spinner.show();
       this.contactService.createContact(this.formData).subscribe({
         next: () => {
           this.formData.reset();

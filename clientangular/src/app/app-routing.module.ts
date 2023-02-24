@@ -34,7 +34,7 @@ const routes: Routes = [
             (m) => m.DefaultModule
           ),
       },
-      { path: 'detail', component: DetailComponent },
+      { path: 'detail/:id', component: DetailComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'product', component: ProductComponent }
     ],
