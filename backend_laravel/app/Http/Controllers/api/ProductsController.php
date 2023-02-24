@@ -16,13 +16,14 @@ class ProductsController extends ResponseController
         return $this->successResponse($product, 'thanh cong');
     }
 
-    public function showbyId($id)
+    public function detailProduct($id)
     {
-        $product = Product::find($id);
+        $product = Product::with('imageProduct', 'brand', 'category')->find($id);
         if (is_null($product)) {
             return response()->json(['message' => 'Product not found']);
         }
-        return response()->json($product::find($id), 200);
+
+        return $this->successResponse($product, "Thành công");
     }
 
     public function delete(Product $product, $id)

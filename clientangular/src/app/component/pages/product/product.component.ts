@@ -37,25 +37,26 @@ export class ProductComponent {
 
   imgProductAPI = environment.apiUrl + 'images/product/';
 
-
   constructor(
     private productService: ProductService,
     private filterService: FilterService,
     private spinner: NgxSpinnerService
-  ) {}
+  ) {
+    spinner.show();
+  }
 
   private destroy$ = new Subject<void>();
 
-  changeSort(event: Event){
+  changeSort(event: Event) {
     const sortValue = (event.target as HTMLSelectElement).value;
-    this.filterService.handleChangeSort(sortValue)
+    this.filterService.handleChangeSort(sortValue);
   }
 
-  changePagination(event: Event){ 
+  changePagination(event: Event) {
     window.scrollTo(0, 0);
     const clickedElement = event.currentTarget as HTMLElement;
     const pageValue = clickedElement.id;
-    this.filterService.handleChangePagination(pageValue)
+    this.filterService.handleChangePagination(pageValue);
   }
 
   ngOnInit() {
@@ -67,7 +68,11 @@ export class ProductComponent {
           this.listProduct = response.data.data;
           this.pagination = response.data.links;
         },
-        error: (error) => console.log(error),
+        error: (error) => {
+          console.log(error);
+          this.spinner.hide();
+        },
+        complete: () => this.spinner.hide(),
       });
 
     this.filterService.filterChanged
@@ -78,10 +83,14 @@ export class ProductComponent {
             this.listProduct = repsonse.data.data;
             this.pagination = repsonse.data.links;
           },
-          error: (error) => console.log(error),
+          error: (error) => {
+            console.log(error);
+            this.spinner.hide();
+          },
+
+          complete: () => this.spinner.hide(),
         });
       });
-
   }
 
   ngOnDestroy(): void {

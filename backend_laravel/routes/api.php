@@ -20,10 +20,10 @@ Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']
 
 //product api
 Route::get('/product', [\App\Http\Controllers\api\ProductsController::class, 'show']);
-Route::get('/product/{id}', [\App\Http\Controllers\api\ProductsController::class, 'showbyId']);
+Route::get('/product/{id}', [\App\Http\Controllers\api\ProductsController::class, 'detailProduct']);
 Route::delete('/delete/{id}', [\App\Http\Controllers\api\ProductsController::class, 'delete']);
 Route::post('/add', [\App\Http\Controllers\api\ProductsController::class, 'addproduct']);
-Route::put('/update/{id}', [\App\Http\Controllers\api\ProductsController::class, 'updateproduct']);
+Route::put('/update/{id}', [\App\Http\Controllers\api\ProductsController::class, 'updateporoduct']);
 
 Route::post('/product-filter', [\App\Http\Controllers\api\ProductsController::class, 'paginationTest']);
 

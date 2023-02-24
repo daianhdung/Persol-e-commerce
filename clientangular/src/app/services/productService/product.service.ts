@@ -16,4 +16,8 @@ export class ProductService {
     
     return this.http.post(this.productAPI + "-filter", data)
   }
+
+  getProductById(id: any):Observable<any>{
+    return this.http.get(this.productAPI + '/' + id)
+  }
 }
