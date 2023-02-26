@@ -1,80 +1,118 @@
-<div class="wrapper">
-  <div class="header-detail">
-    <a routerLink="/home" class="link-header">Home</a>
-    <i class="bi bi-caret-right-fill"></i>
-    <a routerLink="/product">Brands</a>
-    <i class="bi bi-caret-right-fill"></i>
-    <span>Sản phẩm</span>
-  </div>
-  <div class="mid-detail">
-<div class="p-4" style="background-color: rgb(125, 201, 201);">
-        <div class="left-detail">
-          <!-- <ShoesThumb children={detailProduct.images} /> -->
-          <swiper
-            [slidesPerView]="1"
-            [navigation]="true"
-            [scrollbar]="{ draggable: true }"
-            [loopFillGroupWithBlank]="true"
-            class="swiper_custom"
-          >
-            <ng-template swiperSlide *ngFor="let item of product.image_product">
-                <img
-                  style="object-fit: contain"
-                  width="100%"
-                  height="400"
-                  [src]="imgImageProductAPI + item.name"
-                  alt=""
-                />
-            </ng-template>
-          </swiper>
-        </div>
-</div>
-    <div class="right-detail">
-      <div class="description">
-        <h1 class="fw-bold">{{ product.name }}</h1>
-        <!-- <div class="span-yellow">Số lượng: 1</div>
-        <div class="span-yellow">Hết hàng</div> -->
-        <div class="description_detail">
-          <h3 class="my-4">
-            Brand: <span>{{ product.brand?.name }}</span>
-          </h3>
-
-          <h3 class="price my-4">
-            Price: <span>{{ product.price | number : "1.0-3" }} VND</span>
-          </h3>
-          <h3 class="my-4">
-            Category: <span>{{ product.category?.name }}</span>
-          </h3>
-          <!-- <h3 class="my-4">Tags: <span>Food Pet, Puppy</span></h3> -->
-        </div>
-      </div>
-      <!-- <div class="product_size">
-        <label> Size </label>
-        <div>
-          <span style="display: inline-block" class="form-check">
-            <input type="radio" name="form-check-input" />
-            <label class="form-check-label" htmlFor="{item.id}"> name </label>
-          </span>
-        </div>
-      </div> -->
-      <!-- {amount && amount > 0 ? <div class='product_action')}>
-                <div class='quantity_setup')}>
-                    <label>
-                        Số lượng
-                    </label>
-                    <button onClick={onReduce} class='btn-reduce', 'btn')} type="button">
-                        -
-                    </button>
-                    <input value={count} type="text" title="Số lượng" maxLength="3" id="qty" name="quantity" onInput={handleInput} onChange={handleChange} />
-                    <button onClick={onIncrease} class='btn-increase', 'btn')} type="button">+</button>
-                </div>
-                <div class='button_action')}>
-                    <button onClick={onSubmit} class='grow_spin')} type="submit" title="Mua Ngay">
-                        <span><FontAwesomeIcon icon={faShoppingBag} /> MUA NGAY</span>
-                    </button>
-                </div>
-            </div> : <h1 class="text-danger fw-bold">Vui lòng chọn size</h1>} -->
+<div class="bg-light mt-5 p-3 rounded" style="position: relative;">
+  <div class="wrapper">
+    <div class="header-detail">
+      <a routerLink="/home" class="link-header">Home</a>
+      <i class="bi bi-caret-right-fill"></i>
+      <a routerLink="/product">Brands</a>
+      <i class="bi bi-caret-right-fill"></i>
+      <span>Sản phẩm</span>
+      <span (click)="addItemCompare()" class="compare_icon"><i class="bi bi-plus-circle"></i> So sánh</span>
     </div>
+    <div class="mid-detail">
+  <div class="p-4" style="background-color: rgb(125, 201, 201);">
+          <div class="left-detail">
+            <!-- <ShoesThumb children={detailProduct.images} /> -->
+            <swiper
+              [slidesPerView]="1"
+              [navigation]="true"
+              [scrollbar]="{ draggable: true }"
+              [loopFillGroupWithBlank]="true"
+              class="swiper_custom"
+            >
+              <ng-template swiperSlide *ngFor="let item of product.image_product">
+                  <img
+                    style="object-fit: contain"
+                    width="100%"
+                    height="400"
+                    [src]="imgImageProductAPI + item.name"
+                    alt=""
+                  />
+              </ng-template>
+            </swiper>
+          </div>
   </div>
-  <!-- {modalOpen && <CartModal closeModal={() => setModalOpen(false)} />} -->
+      <div class="right-detail">
+        <div class="description">
+          <h1 class="fw-bold">{{ product.name }}</h1>
+          <!-- <div class="span-yellow">Số lượng: 1</div>
+          <div class="span-yellow">Hết hàng</div> -->
+          <div class="description_detail">
+            <h3 class="my-4">
+              Brand: <span>{{ product.brand?.name }}</span>
+            </h3>
+  
+            <h3 class="price my-4">
+              Price: <span>{{ product.price | number : "1.0-3" }} VND</span>
+            </h3>
+            <h3 class="my-4">
+              Category: <span>{{ product.category?.name }}</span>
+            </h3>
+            <!-- <h3 class="my-4">Tags: <span>Food Pet, Puppy</span></h3> -->
+          </div>
+        </div>
+        <!-- <div class="product_size">
+          <label> Size </label>
+          <div>
+            <span style="display: inline-block" class="form-check">
+              <input type="radio" name="form-check-input" />
+              <label class="form-check-label" htmlFor="{item.id}"> name </label>
+            </span>
+          </div>
+        </div> -->
+        <!-- {amount && amount > 0 ? <div class='product_action')}>
+                  <div class='quantity_setup')}>
+                      <label>
+                          Số lượng
+                      </label>
+                      <button onClick={onReduce} class='btn-reduce', 'btn')} type="button">
+                          -
+                      </button>
+                      <input value={count} type="text" title="Số lượng" maxLength="3" id="qty" name="quantity" onInput={handleInput} onChange={handleChange} />
+                      <button onClick={onIncrease} class='btn-increase', 'btn')} type="button">+</button>
+                  </div>
+                  <div class='button_action')}>
+                      <button onClick={onSubmit} class='grow_spin')} type="submit" title="Mua Ngay">
+                          <span><FontAwesomeIcon icon={faShoppingBag} /> MUA NGAY</span>
+                      </button>
+                  </div>
+              </div> : <h1 class="text-danger fw-bold">Vui lòng chọn size</h1>} -->
+              <div class="button_action"><button class="grow_spin" (click)="downloadWordProduct(product.id, product.name)">Download Detail</button></div>
+      </div>
+    </div>
+    <!-- {modalOpen && <CartModal closeModal={() => setModalOpen(false)} />} -->
+  </div>
+  
+  <div class="container stick_compare" style="height: 150px;">
+    <ul class="compare_list p-3">
+      <li *ngFor="let item of compareList">
+        <a style="text-align: center;"  *ngIf="item.id !== ''; else empty">
+          <img width="100" height="70" [src]="imgProductAPI + item.image" alt="Product">
+          <h5>{{item.name}}</h5>
+        </a>
+        <ng-template #empty>
+          <h4><i class="bi bi-plus-circle-dotted me-2"></i>Empty</h4>
+        </ng-template>
+        <span *ngIf="item.id !== ''" style="cursor: pointer;" class="fs-3 text-danger" (click)="removeItemCompare(item.id)">&times;</span>
+      </li>
+      <!-- <li>
+        <a>
+          <img width="95%" height="95%" src="" alt="Product">
+          <h5>Product</h5>
+        </a>
+        <span>&times;</span>
+      </li>
+      <li>
+        <a>
+          <img width="95%" height="95%" src="" alt="Product">
+          <i class="bi bi-plus-square-dotted"></i>
+          <h5>Product</h5>
+        </a>
+        <span>&times;</span>
+      </li> -->
+      <li>
+        <div class="button_action"><button class="grow_spin">Compare now</button></div>
+        <button class="btn btn-outline-danger mt-2" (click)="removeAllItemCompare()">Delete all</button>
+      </li>
+    </ul>
+  </div>
 </div>

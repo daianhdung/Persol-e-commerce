@@ -12,10 +12,10 @@
         formData.get('fullname')?.hasError('required')
       "
     >
-      <span class="text-danger">Username is required</span>
+      <span class="text-danger">Full Name is required</span>
     </div>
     <input type="text" formControlName="fullname" class="form-control" />
-    <label class="form-label" for="registerUsername">Username</label>
+    <label class="form-label" for="registerUsername">Full Name</label>
   </div>
 
   <!-- Email input -->
@@ -97,6 +97,6 @@
     Sign in
   </button>
   <div class="text-center">
-    <p>Have account? <a class="text-danger" routerLink="/login">Login</a></p>
+    <p>Have account? <a style="text-decoration: underline;" class="text-danger" routerLink="/login">Login</a></p>
   </div>
 </form>

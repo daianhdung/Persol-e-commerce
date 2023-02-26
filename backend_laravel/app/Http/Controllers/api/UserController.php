@@ -13,7 +13,7 @@ class UserController extends ResponseController
         $requestData = $request->all();
 
         $requestData['password'] = Hash::make($requestData['password']);
-        $requestData['role_id'] = 1;
+        $requestData['role_id'] = 2;
         $user = User::create($requestData);
 
         return $this->successResponse($user, 'Đăng ký tài khoản thành công !');
@@ -30,7 +30,7 @@ class UserController extends ResponseController
     }
 
     //sua lai add user
-    
+
     public function addproduct(Request $request) {
         $user = User::create($request->all());
         return response($user,201);

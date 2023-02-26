@@ -38,4 +38,8 @@ export class CookieService {
     let cookieString = `${key}=${value}; expires=${expires}; path=/`;
     document.cookie = cookieString;
   }
+
+  setCookieNoExpired(key: string, value: string){
+    document.cookie = `${key}=${value}`;
+  }
 }

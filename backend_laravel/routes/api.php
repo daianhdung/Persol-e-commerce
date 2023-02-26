@@ -42,5 +42,16 @@ Route::delete('/mail/{id}', [\App\Http\Controllers\api\ContactController::class,
 //Brand
 Route::get('/brands', [\App\Http\Controllers\api\BrandController::class, 'getAllBrand']);
 Route::get('/categories/{idCate}/brands', [\App\Http\Controllers\api\BrandController::class, 'getAllBrandByIdCategory']);
+
+Route::get('/test22', [\App\Http\Controllers\api\BrandController::class, 'getBrandCategory']);
+
 //Category
 Route::get('/categories', [\App\Http\Controllers\api\CategoryController::class, 'getAllCategory']);
+
+//Word Download
+Route::get('/word/{id}', [\App\Http\Controllers\api\WordController::class, 'downloadWord']);
+
+//Route::get('/test1', [\App\Http\Controllers\api\CategoryBrandController::class, 'getBrandByCategory']);
+//Visitor
+Route::post('/visitor', [\App\Http\Controllers\api\TrackIpController::class, 'newVisitor']);
+
