@@ -35,14 +35,14 @@ export class FooterComponent {
       this.date = currentTime.toLocaleDateString();
     });
 
-    this.geolocationService.getAddress('d5 nguyen gia tri').subscribe(
-      (response) => {
-        console.log(response);
-        console.log(response.Results[0]);
-        this.address = response.Results[0].address;
-      },
-      (error) => console.log(error)
-    );
+    // this.geolocationService.getAddress('d5 nguyen gia tri').subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //     console.log(response.Results[0]);
+    //     this.address = response.Results[0].address;
+    //   },
+    //   (error) => console.log(error)
+    // );
   }
 
   ngOnDestroy() {

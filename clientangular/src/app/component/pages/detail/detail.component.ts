@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CompareService } from 'app/services/productService/compare.service';
+import { DownloadService } from 'app/services/productService/download.service';
 import { ProductService } from 'app/services/productService/product.service';
 import { environment } from 'environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -17,11 +19,15 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export class DetailComponent {
   id: any
   product : any = {}
+  compareList: any[] = []
 
   imgImageProductAPI = environment.apiUrl + 'images/product_image/';
+  imgProductAPI = environment.apiUrl + 'images/product/';
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private spinner: NgxSpinnerService){
+  constructor(private route: ActivatedRoute, private productService: ProductService, private spinner: NgxSpinnerService,
+    private downWordService: DownloadService, private compareService: CompareService){
     spinner.show()
+    this.compareList = compareService.request
   }
 
   ngOnInit(){
@@ -37,5 +43,32 @@ export class DetailComponent {
       },
       complete: () => this.spinner.hide()
     })
+  }
+
+  downloadWordProduct(id:any, fileName:string){
+    this.downWordService.downloadProduct(id).subscribe({
+      next: (response:Blob) => {
+        const downloadUrl = URL.createObjectURL(response);
+        const link = document.createElement('a');
+        link.href = downloadUrl
+        link.download = fileName + '.doc'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      },
+      error: (error) => console.log(error)
+    })
+  }
+
+  addItemCompare(){
+    this.compareService.addCompareProductItem(this.product)
+  }
+
+  removeItemCompare(id:any){
+    this.compareService.removeCompareProductItem(id)
+  }
+
+  removeAllItemCompare(){
+    this.compareService.deleteAllCompareRequest()
   }
 }
