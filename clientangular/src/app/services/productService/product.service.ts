@@ -10,6 +10,8 @@ export class ProductService {
 
   private productAPI = environment.apiUrl + 'product';
 
+  private productDetailAPI = environment.apiUrl + 'product-detail';
+
   constructor(private http: HttpClient) { }
 
   getProductByFilter(data : any) :Observable<any>{
@@ -19,5 +21,9 @@ export class ProductService {
 
   getProductById(id: any):Observable<any>{
     return this.http.get(this.productAPI + '/' + id)
+  }
+
+  getListProductByIds(id: any):Observable <any>{
+    return this.http.get(this.productDetailAPI + `?ids=${id}`)
   }
 }

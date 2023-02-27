@@ -49,6 +49,8 @@ import { IconSetService } from '@coreui/icons-angular';
 import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CompareComponent } from './component/pages/compare/compare.component';
+import { CompareBarComponent } from './component/layout/component/compare-bar/compare-bar.component';
 
 
 

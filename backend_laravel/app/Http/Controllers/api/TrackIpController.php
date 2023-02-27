@@ -11,6 +11,11 @@ class TrackIpController extends ResponseController
 {
     //
 
+    public function getVisitorCount(){
+        $visitorCount = Visitor::count('count');
+        return $this->successResponse($visitorCount, "thành công");
+    }
+
     public function newVisitor(Request $request){
         $requestData = $request->all();
         $requestData['ip_address'] = $request->ip;

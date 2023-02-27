@@ -37,7 +37,7 @@
 
   .card {
     width: 100%;
-    height: 350px;
+    height: 400px;
     background: linear-gradient(#7ee8fa, #eec0c6);
     padding: 10px 10px;
     border-radius: 6px;
@@ -64,5 +64,13 @@
 
   .card-title{
     margin: 10px 0;
+  }
+}
+.compare_icon {
+  color: #2f80ed;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
   }
 }

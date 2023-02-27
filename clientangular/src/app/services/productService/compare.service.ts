@@ -56,9 +56,6 @@ export class CompareService {
           this.request[i].id = product.id;
           this.request[i].name = product.name;
           this.request[i].image = product.main_image;
-          this.request[i].brandName = product.brand.name;
-          this.request[i].cateName = product.category.name;
-          this.request[i].price = product.price;
           this.saveRequest();
           break;
         }
