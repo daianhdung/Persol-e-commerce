@@ -30,6 +30,7 @@ class WordController extends Controller
         $result .= '<div style="color: #28a1b6">' . 'Category: ' . $item['category']->name . '</div> </br>';
         $result .= '<div style="color: #28a1b6">'. 'Brand: ' . $item['brand']->name . '</div> </br>';
         $result .= '<div style="color: #28a1b6">' . 'Price: '. $item['price'] . '</div> </br>';
+        $result .= '<div style="color: #28a1b6">' . 'Description: '. $item['detail'] . '</div> </br>';
         $result .= '</html>';
         return $result;
     }

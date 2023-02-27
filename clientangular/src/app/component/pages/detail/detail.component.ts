@@ -21,6 +21,8 @@ export class DetailComponent {
   product : any = {}
   compareList: any[] = []
 
+  toggleCompare = true
+
   imgImageProductAPI = environment.apiUrl + 'images/product_image/';
   imgProductAPI = environment.apiUrl + 'images/product/';
 
@@ -31,6 +33,7 @@ export class DetailComponent {
   }
 
   ngOnInit(){
+    window.scrollTo(0, 0);
     this.id = this.route.snapshot.paramMap.get('id')
     this.productService.getProductById(this.id).subscribe({
       next: response => {
@@ -62,13 +65,5 @@ export class DetailComponent {
 
   addItemCompare(){
     this.compareService.addCompareProductItem(this.product)
-  }
-
-  removeItemCompare(id:any){
-    this.compareService.removeCompareProductItem(id)
-  }
-
-  removeAllItemCompare(){
-    this.compareService.deleteAllCompareRequest()
   }
 }

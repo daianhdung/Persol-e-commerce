@@ -18,11 +18,10 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    const newVisitorKey =
-      '$2a$10$rIGqLQIOCHWHh95Kvs4te.Q4drx4H5Nmunakg9MDL5zYA1IYhb2NG';
-    const cookieVisitor = this.cookieService.get('visitor')
-    if (!cookieVisitor || cookieVisitor != newVisitorKey) {
-      this.cookieService.setCookieNoExpired('visitor', newVisitorKey);
+    const newVisitorKey = '$2a$10$rIGqLQIOCHWHh95Kvs4te.Q4drx4H5Nmunakg9MDL5zYA1IYhb2NG';
+    const sessionStorageVisitor = sessionStorage.getItem('visitor');
+    if (!sessionStorageVisitor || sessionStorageVisitor !== newVisitorKey) {
+      sessionStorage.setItem('visitor', newVisitorKey);
       this.trackIpService.getIpUser().subscribe({
         next: (response) => {
           this.trackIpService.newVisitor(response).subscribe({
@@ -33,20 +32,11 @@ export class AppComponent {
         error: (error) => console.log(error),
       });
     }
-
-    
   }
 
   @HostListener('window:unload', ['$event'])
   onUnload(event: Event) {
-    let pageReloaded = window.performance
-                 .getEntriesByType('navigation')
-                 .map((nav) => (nav as any).type)
-                 .includes('reload');
-    console.log(pageReloaded);
-    if (this.cookieService.get('visitor') && !pageReloaded) {
-      this.cookieService.remove('visitor');
-    }
+    
     console.log('User is leaving the page');
   }
 }

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" style="position: relative">
   <!-- Sidebar -->
   <app-sidebar-filter></app-sidebar-filter>
 
@@ -39,12 +39,15 @@
                         <img [src]="imgProductAPI + item.main_image" />
                       </div>
                       <div class="card-title">
-                        <h4>{{ item.name }}</h4>
+                        <h5>{{ item.name }}</h5>
                       </div>
-                      <div class="card-price p-2 fs-5 fw-bold">
+                      <div class="card-price p-1 fs-5 fw-bold">
                         <span>{{ item.price | number : "1.0-3" }}₫</span>
                       </div>
                     </a>
+                    <span (click)="addItemCompare(item)" class="compare_icon mt-2"
+                        ><i class="bi bi-plus-circle"></i> Compare</span
+                      >
                   </div>
                 </div>
 
@@ -96,4 +99,7 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container">
+  <app-compare-bar></app-compare-bar>
 </div>

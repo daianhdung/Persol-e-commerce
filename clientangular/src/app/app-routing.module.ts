@@ -12,6 +12,7 @@ import { CreateProductComponent } from './component/pages/admin/admin-product/cr
 import { ListProductComponent } from './component/pages/admin/admin-product/list-product/list-product.component';
 import { UserCreateComponent } from './component/pages/admin/admin-user/user-create/user-create.component';
 import { UserListComponent } from './component/pages/admin/admin-user/user-list/user-list.component';
+import { CompareComponent } from './component/pages/compare/compare.component';
 import { ContactComponent } from './component/pages/contact/contact.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
 import { PageNotFoundComponent } from './component/pages/page-not-found/page-not-found.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
       },
       { path: 'detail/:id', component: DetailComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'product', component: ProductComponent }
+      { path: 'product', component: ProductComponent },
+      { path: 'compare', component: CompareComponent }
     ],
   },
   //Home Routes

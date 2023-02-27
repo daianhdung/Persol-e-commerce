@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { LoginService } from 'app/services/authService/login.service';
 import { BrandService } from 'app/services/brandService/brand.service';
 import { FilterService } from 'app/services/productService/filter.service';
+import { TrackIpService } from 'app/services/trackipService/track-ip.service';
 import { environment } from 'environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -29,10 +31,14 @@ export class HeaderComponent {
   ];
   imgBrandAPI = environment.apiUrl + 'images/brand/';
 
+  visitorCount: any 
+
   constructor(
     private loginService: LoginService,
     private brandService: BrandService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private trackIpService: TrackIpService,
+    private toastr: ToastrService
   ) {}
 
   isAuthenticated() {
@@ -45,6 +51,7 @@ export class HeaderComponent {
 
   logout() {
     this.loginService.logout();
+    this.toastr.success('Logout success')
   }
 
   filterBrandByCate(idCate:any, idBrand:any){
@@ -60,5 +67,8 @@ export class HeaderComponent {
         error: (error) => console.log(error),
       });
     });
+    this.trackIpService.getVisitorCount().subscribe({
+      next: response => this.visitorCount = response.data
+    })
   }
 }

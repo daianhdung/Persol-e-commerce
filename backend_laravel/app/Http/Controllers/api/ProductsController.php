@@ -26,6 +26,13 @@ class ProductsController extends ResponseController
         return $this->successResponse($product, "Thành công");
     }
 
+    public function detailListProduct(Request $request){
+        $productIds = explode(',', $request->input('ids'));
+        $product = Product::whereIn('id', $productIds)->get();
+
+        return $this->successResponse($product, "Thành công");
+    }
+
     public function delete(Product $product, $id)
     {
         $product = Product::find($id);

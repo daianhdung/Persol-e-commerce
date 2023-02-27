@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BrandService } from 'app/services/brandService/brand.service';
+import { CompareService } from 'app/services/productService/compare.service';
 import { FilterService } from 'app/services/productService/filter.service';
 import { ProductService } from 'app/services/productService/product.service';
 import { environment } from 'environments/environment';
@@ -40,7 +41,8 @@ export class ProductComponent {
   constructor(
     private productService: ProductService,
     private filterService: FilterService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private compareService: CompareService
   ) {
     spinner.show();
   }
@@ -91,6 +93,10 @@ export class ProductComponent {
           complete: () => this.spinner.hide(),
         });
       });
+  }
+
+  addItemCompare(product:any){
+    this.compareService.addCompareProductItem(product)
   }
 
   ngOnDestroy(): void {

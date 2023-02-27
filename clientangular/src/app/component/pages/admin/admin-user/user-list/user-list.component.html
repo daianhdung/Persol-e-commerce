@@ -11,13 +11,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th class="" scope="row">dsa</th>
-      <td style="max-width: '200px'">das</td>
-      <td>das</td>
-      <td style="max-width: '90px'">das</td>
-      <td>das</td>
-      <td>asd</td>
+    <tr *ngFor="let item of userList">
+      <th class="" scope="row">{{item.id}}</th>
+      <td style="max-width: '200px'">{{item.fullname}}</td>
+      <td>{{item.email}}</td>
+      <td style="max-width: '90px'">{{item.phone}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.role}}</td>
       <td class="table-action">
         <a> <i class="bi bi-pencil-square text-info fs-3"></i> </a>
         <a> <i class="bi bi-trash text-danger fs-3 ms-3"></i> </a>

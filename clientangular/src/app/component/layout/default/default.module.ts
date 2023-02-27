@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
 import { SidebarFilterComponent } from '../component/sidebar-filter/sidebar-filter.component';
 import { ListItemComponent } from '../component/list-item/list-item.component';
+import { CompareComponent } from 'app/component/pages/compare/compare.component';
+import { CompareBarComponent } from '../component/compare-bar/compare-bar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ListItemComponent } from '../component/list-item/list-item.component';
     ProductComponent,
     SidebarFilterComponent,
     ListItemComponent,
+    CompareComponent,
+    CompareBarComponent,
   ],
   imports: [
     CommonModule,

@@ -20,6 +20,7 @@ Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']
 
 //product api
 Route::get('/product', [\App\Http\Controllers\api\ProductsController::class, 'show']);
+Route::get('/product-detail', [\App\Http\Controllers\api\ProductsController::class, 'detailListProduct']);
 Route::get('/product/{id}', [\App\Http\Controllers\api\ProductsController::class, 'detailProduct']);
 Route::delete('/delete/{id}', [\App\Http\Controllers\api\ProductsController::class, 'delete']);
 Route::post('/add', [\App\Http\Controllers\api\ProductsController::class, 'addproduct']);
@@ -32,6 +33,7 @@ Route::post('/images', [\App\Http\Controllers\api\ImageController::class, 'uploa
 Route::get('/images/{category}/{fileName}', [\App\Http\Controllers\api\ImageController::class, 'getImage']);
 
 //user api
+Route::get('/users', [\App\Http\Controllers\api\UserController::class, 'getAllUser']);
 Route::delete('/deleteUser/{id}', [\App\Http\Controllers\api\ProductsController::class, 'deleteUser']);
 
 //mail
@@ -53,5 +55,6 @@ Route::get('/word/{id}', [\App\Http\Controllers\api\WordController::class, 'down
 
 //Route::get('/test1', [\App\Http\Controllers\api\CategoryBrandController::class, 'getBrandByCategory']);
 //Visitor
+Route::get('/visitor', [\App\Http\Controllers\api\TrackIpController::class, 'getVisitorCount']);
 Route::post('/visitor', [\App\Http\Controllers\api\TrackIpController::class, 'newVisitor']);
 

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends ResponseController
 {
+    public function getAllUser(){
+        $users = User::all();
+
+        return $this->successResponse($users, "Thành công");
+    }
+
     public function register(Request $request){
         $requestData = $request->all();
 
