@@ -1,0 +1,80 @@
+<!-- INSERT USER------------------ -->
+<form [formGroup]="formData">
+    <div class="form-update row p-5">
+      <div class="row justify-content-center mb-3">
+        <div class="col-md-4 fw-bold">
+          <label>Thêm mới thương hiệu </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-5">
+          <label htmlFor="name">Tên thượng hiệu</label>
+          <input
+            style="height: '40px'"
+            type="text"
+            class="form-control form-control-lg"
+            id="name"
+            placeholder=""
+            formControlName="name"
+          />
+          <ng-container
+            *ngIf="
+              (formData.get('name')?.invalid && isSubmitted) ||
+              formData.get('name')?.dirty ||
+              formData.get('name')?.touched
+            "
+          >
+            <span
+              class="text-danger"
+              *ngIf="formData.get('name')?.errors?.['required']"
+            >
+              Tên thượng hiệu không được trống.
+            </span>
+          </ng-container>
+        </div>
+        <div class="form-group col-md-5">
+          <label htmlFor="brand">Thể loại</label>
+          <select
+            style="height: '40px'"
+            class="form-control form-control-lg"
+            id="category"
+            formControlName="category"
+          >
+            <option *ngFor="let item of listCategory" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+          <ng-container
+            *ngIf="
+              (formData.get('category')?.invalid && isSubmitted) ||
+              formData.get('category')?.dirty ||
+              formData.get('category')?.touched
+            "
+          >
+            <span
+              class="text-danger"
+              *ngIf="formData.get('category')?.errors?.['required']"
+            >
+              Thương hiệu không được trống.
+            </span>
+          </ng-container>
+        </div>
+      </div>
+  
+      <div class="mt-5">
+        <button
+          (click)="onSubmit()"
+          style="width: '100px'"
+          class="me-4 btn btn-outline-info mb-2 p-3"
+        >
+          Xác nhận
+        </button>
+        <a routerLink="/admin-brand-list">
+          <button style="width: '100px'" class="btn btn-outline-danger mb-2 p-3">
+            Quay lại
+          </button>
+        </a>
+      </div>
+    </div>
+  </form>
+  

@@ -51,6 +51,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CompareComponent } from './component/pages/compare/compare.component';
 import { CompareBarComponent } from './component/layout/component/compare-bar/compare-bar.component';
+import { CreateCategoryComponent } from './component/pages/admin/admin-category/create-category/create-category.component';
+import { UpdateCategoryComponent } from './component/pages/admin/admin-category/update-category/update-category.component';
+import { ListCategoryComponent } from './component/pages/admin/admin-category/list-category/list-category.component';
+import { CreateBrandComponent } from './component/pages/admin/admin-brand/create-brand/create-brand.component';
+import { UpdateBrandComponent } from './component/pages/admin/admin-brand/update-brand/update-brand.component';
+import { ListBrandComponent } from './component/pages/admin/admin-brand/list-brand/list-brand.component';
+import { environment } from 'environments/environment';
 
 
 
@@ -86,7 +93,7 @@ export function tokenGetter(this: any) {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["http://localhost:8000"],
+        allowedDomains: ["https://nhom5.eproject.asia"],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     }),

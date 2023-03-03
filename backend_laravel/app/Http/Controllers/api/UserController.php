@@ -6,13 +6,20 @@ use App\Http\Controllers\ResponseController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Mosquitto\Exception;
 
 class UserController extends ResponseController
 {
     public function getAllUser(){
-        $users = User::all();
+        $users = User::with('role')->get();
 
         return $this->successResponse($users, "Thành công");
+    }
+
+    public function getUserById($id){
+        $user = User::with('role')->find($id);
+
+        return $this->successResponse($user, "Thành công");
     }
 
     public function register(Request $request){
@@ -25,25 +32,37 @@ class UserController extends ResponseController
         return $this->successResponse($user, 'Đăng ký tài khoản thành công !');
     }
 
-    public function deleteUser(User $user,$id){
+    public function createUser(Request $request){
+        $requestData = $request->all();
+
+        $requestData['password'] = Hash::make($requestData['password']);
+        $requestData['role_id'] = $requestData['role'];
+        $user = User::create($requestData);
+
+        return $this->successResponse($user, 'Tạo tài khoản thành công !');
+    }
+
+    public function updateUserById( $id ,Request $request){
+        $requestData = $request->all();
+        $user = User::find($id);
+        $requestData['password'] = Hash::make($requestData['password']);
+        $requestData['role_id'] = $requestData['role'];
+        try{
+            $user->update($requestData);
+            return $this->successResponse($user, 'Cập nhật tài khoản thành công !');
+        }catch (Exception $e){
+            return $this->errorResponse($e, 'Cập nhật tài khoản thất bại !');
+        }
+    }
+
+    public function deleteUser($id){
         $user = User::find($id);
         if(is_null($user)) {
-            return response()->json(['message' => 'Product not found']);
+            return $this->errorResponse("Không tìm thấy user");
         }
         $user->delete();
-        return $this->successResponse($user,'thanh cong');
+        return $this->successResponse($user,'Xóa account thành công');
 
     }
-
-    //sua lai add user
-
-    public function addproduct(Request $request) {
-        $user = User::create($request->all());
-        return response($user,201);
-    }
-
-
-
-
 
 }

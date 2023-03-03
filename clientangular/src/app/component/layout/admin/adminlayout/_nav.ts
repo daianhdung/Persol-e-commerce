@@ -47,6 +47,36 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Brand',
+    url: '/admin-brand-list',
+    linkProps: { fragment: 'someAnchor' },
+    iconComponent: { name: 'cil-gem' },
+    children: [
+      {
+        name: 'Form',
+        url: '/admin-brand-create'
+      },{
+        name: 'List',
+        url: '/admin-brand-list'
+      }
+    ]
+  },
+  {
+    name: 'Category',
+    url: '/admin-category-list',
+    linkProps: { fragment: 'someAnchor' },
+    iconComponent: { name: 'cil3d' },
+    children: [
+      {
+        name: 'Form',
+        url: '/admin-category-create'
+      },{
+        name: 'List',
+        url: '/admin-category-list'
+      }
+    ]
+  },
+  {
     name: 'Mail',
     url: '/admin-mail',
     iconComponent: { name: 'cil-envelope-closed' },

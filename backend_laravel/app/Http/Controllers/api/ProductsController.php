@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\ImageProduct;
 use App\Models\Product;
 use App\Http\Controllers\ResponseController;
 use Illuminate\Support\Facades\DB;
@@ -10,9 +11,9 @@ use Illuminate\Http\Request;
 
 class ProductsController extends ResponseController
 {
-    public function show()
+    public function getAllProduct()
     {
-        $product = Product::all();
+        $product = Product::with('brand', 'category')->get();
         return $this->successResponse($product, 'thanh cong');
     }
 
@@ -33,22 +34,46 @@ class ProductsController extends ResponseController
         return $this->successResponse($product, "Thành công");
     }
 
-    public function delete(Product $product, $id)
+    public function createProduct(Request $request)
     {
-        $product = Product::find($id);
-        if (is_null($product)) {
-            return response()->json(['message' => 'Product not found']);
+        $requestData = $request->all();
+        $requestData['brand_id'] = $requestData['brand'];
+        $requestData['category_id'] = $requestData['category'];
+
+//        Upload main_image
+        $file = $request->file('mainImage');
+        $fileMainName = $file->getClientOriginalName();
+        $file->storeAs('public/images/product', $fileMainName);
+        $requestData['main_image'] = $fileMainName;
+
+        try {
+            $product = Product::create($requestData);
+            //Upload images
+            $files = $request->file('images');
+            foreach ($files as $image){
+                $fileName = $image->getClientOriginalName();
+                $image->storeAs('public/images/product_image', $fileName);
+                $productImage = new ImageProduct();
+                $productImage->product_id  = $product->id;
+                $productImage->name = $fileName;
+                $productImage->save();
+            }
+            return $this->successResponse($product, "Tạo sản phẩm thành công");
+        }catch (\Exception $e){
+            return $this->errorResponse($e, "Thất bại");
         }
-        $product->delete();
-        return $this->successResponse($product, 'thanh cong');
 
     }
 
-
-    public function addproduct(Request $request)
+    public function deleteProduct($id)
     {
-        $product = Product::create($request->all());
-        return response($product, 201);
+        $product = Product::find($id);
+        if (is_null($product)) {
+            return $this->errorResponse('message' ,'Product not found');
+        }
+        $product->delete();
+        return $this->successResponse($product, 'Xóa sản phẩm thành công');
+
     }
 
     public function updateproduct(Request $request, $id)
@@ -92,5 +117,33 @@ class ProductsController extends ResponseController
         $product = $productQuery->paginate(12);
 
         return $this->successResponse($product, "Thành công");
+    }
+
+    public function getTopSellingProduct(){
+        $product = Product::orderBy('amount_of_sold', 'desc')->take(10)->get();
+
+        return $this->successResponse($product, "Thành công");
+    }
+
+    public function getFeatureProduct(){
+        $products = Product::whereIn('price', function($query) {
+            $query->selectRaw('MAX(price)')
+                ->from('product')
+                ->groupBy('brand_id');
+        })
+            ->get();
+
+        return $this->successResponse($products, "Thành công");
+    }
+
+    public function getTodayBestDealProduct(){
+        $products = Product::whereIn('price', function($query) {
+            $query->selectRaw('MIN(price)')
+                ->from('product')
+                ->groupBy('brand_id');
+        })
+            ->get();
+
+        return $this->successResponse($products, "Thành công");
     }
 }

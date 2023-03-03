@@ -14,7 +14,7 @@ class BrandController extends ResponseController
     //
     public function getAllBrand(){
 
-        $brands = Brand::all();
+        $brands = Brand::with('categories')->get();
 
         return $this->successResponse($brands, "Thành công");
     }
@@ -24,6 +24,35 @@ class BrandController extends ResponseController
             $query->where('id', $idCate);
         })->get();
         return $this->successResponse($brands, "Thành công");
+    }
+
+    public function createBrand(Request $request){
+        $requestData = $request->all();
+
+        $user = Brand::create($requestData);
+
+        return $this->successResponse($user, 'Tạo thương hiệu thành công !');
+    }
+
+    public function updateBrandId( $id ,Request $request){
+        $requestData = $request->all();
+        $user = Brand::find($id);
+        try{
+            $user->update($requestData);
+            return $this->successResponse($user, 'Cập nhật thương hiệu thành công !');
+        }catch (Exception $e){
+            return $this->errorResponse($e, 'Cập nhật thương hiệu thất bại !');
+        }
+    }
+
+    public function deleteBrand($id){
+        $user = Brand::find($id);
+        if(is_null($user)) {
+            return $this->errorResponse("Không tìm thấy thương hiệu");
+        }
+        $user->delete();
+        return $this->successResponse($user,'Xóa thương hiệu thành công');
+
     }
 
 //    public function getBrandByCategory($arrayCate){

@@ -1,5 +1,5 @@
 <?php
-
+ini_set('extension', 'fileinfo.so');
 /*
 |--------------------------------------------------------------------------
 | Create The Application

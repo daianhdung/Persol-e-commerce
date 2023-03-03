@@ -9,21 +9,47 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private productAPI = environment.apiUrl + 'product';
+  private productAllAPI = environment.apiUrl + 'products';
 
   private productDetailAPI = environment.apiUrl + 'product-detail';
 
   constructor(private http: HttpClient) { }
 
-  getProductByFilter(data : any) :Observable<any>{
-    
-    return this.http.post(this.productAPI + "-filter", data)
+  getAllProduct():Observable<any>{
+    return this.http.get(this.productAllAPI)
   }
 
   getProductById(id: any):Observable<any>{
     return this.http.get(this.productAPI + '/' + id)
   }
 
+  //Customized get
+
+  getAllTopSellingProduct():Observable <any>{
+    return this.http.get(this.productAPI + '-topsell')
+  }
+  getAllFeatureProduct():Observable <any>{
+    return this.http.get(this.productAPI + '-feature')
+  }
+  getAllBestDealProduct():Observable <any>{
+    return this.http.get(this.productAPI + '-bestdeal')
+  }
+
+
+  getProductByFilter(data : any) :Observable<any>{
+    
+    return this.http.post(this.productAPI + "-filter", data)
+  }
+
   getListProductByIds(id: any):Observable <any>{
     return this.http.get(this.productDetailAPI + `?ids=${id}`)
+  }
+
+  createProduct(data:any):Observable <any>{
+    return this.http.post(this.productAPI, data)
+  }
+
+  deleteProduct(id:any) :Observable<any>{
+    return this.http.delete(this.productAPI + `/${id}`)
   }
 }
