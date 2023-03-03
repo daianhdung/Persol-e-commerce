@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ResponseController extends Controller
 {
@@ -19,7 +20,8 @@ class ResponseController extends Controller
             $response['message'] = $message;
         }
 
-        return response()->json($response, 200);
+        return response()->json($response, Response::HTTP_OK, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+            JSON_UNESCAPED_UNICODE);
     }
 
     public function errorResponse($error, $errorMessages = [], $code = 404){

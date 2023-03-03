@@ -32,7 +32,7 @@
             {{ item.name }}
           </a>
           <ul class="dropdown-menu">
-            <ng-container *ngIf="item.brands.length > 0">
+            <ng-container *ngIf="item.brands[0].image !== '' " >
               <li *ngFor="let brand of item.brands">
                 <a (click)="filterBrandByCate(item.id, brand.id)" routerLink="/product" class="dropdown-item" href="#">
                   <img style="object-fit: contain;" width="50" height="50" [src]="imgBrandAPI + brand.image" alt=""> {{brand.name}}

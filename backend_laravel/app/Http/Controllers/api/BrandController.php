@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends ResponseController
 {
@@ -15,7 +16,6 @@ class BrandController extends ResponseController
     public function getAllBrand(){
 
         $brands = Brand::with('categories')->get();
-
         return $this->successResponse($brands, "Thành công");
     }
 
@@ -27,11 +27,35 @@ class BrandController extends ResponseController
     }
 
     public function createBrand(Request $request){
-        $requestData = $request->all();
+//Request        $brand = '';
+//        DB::transaction(function() use($request) {
+//            $requestData = $request->all();
+//            $brand = Brand::create($requestData);
+//
+//
+//            $categories = $request->category;
+//            $brand->id;
 
-        $user = Brand::create($requestData);
-
-        return $this->successResponse($user, 'Tạo thương hiệu thành công !');
+//            $brandName = $request->brandName;
+            // gọi câu query insert brandname, sau đó lấy đc id brandname
+//            $brandId = 7;
+//
+//            $listCat = $request->categories;
+//            $listCat = [
+//              1,2,3
+//            ];
+//
+//            $dataInsert = [];
+//            foreach($listCat as $cat){
+//                $dataInsert[] = [
+//                    'category_id' => $cat,
+//                    'brand_id' => $brandId
+//                ];
+//            }
+//        });
+//
+//
+//        return $this->successResponse($brand, 'Tạo thương hiệu thành công !');
     }
 
     public function updateBrandId( $id ,Request $request){

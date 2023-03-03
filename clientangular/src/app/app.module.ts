@@ -93,7 +93,7 @@ export function tokenGetter(this: any) {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["https://nhom5.eproject.asia"],
+        allowedDomains: [environment.domain],
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     }),

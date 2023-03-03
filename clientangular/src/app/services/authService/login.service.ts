@@ -19,6 +19,7 @@ export class LoginService {
 
 
   public login(email: string, password: string){
+    console.log(this.loginAPI);
     return axios.post(this.loginAPI, {
       email,
       password
@@ -29,13 +30,14 @@ export class LoginService {
   public logout(): void {
     this.cookieService.remove('jwtToken');
   }
+  
 
   public isAdminAuthenticated(): boolean {
     if(this.cookieService.get('jwtToken')){
       const token = this.cookieService.get('jwtToken')
       if(token){
         const decodedToken = this.jwtHelper.decodeToken(token)
-        if(decodedToken.sub1.roleId === 1){
+        if(decodedToken.sub1.roleId == 1){
           return true
         }
       }
@@ -47,7 +49,7 @@ export class LoginService {
       const token = this.cookieService.get('jwtToken')
       if(token){
         const decodedToken = this.jwtHelper.decodeToken(token)
-        if(decodedToken.sub1.roleId === 2){
+        if(decodedToken.sub1.roleId == "2"){
           return true
         }
       }

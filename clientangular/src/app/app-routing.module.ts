@@ -16,6 +16,7 @@ import { ListMailComponent } from './component/pages/admin/admin-mail/list-mail/
 import { MailDetailComponent } from './component/pages/admin/admin-mail/mail-detail/mail-detail.component';
 import { CreateProductComponent } from './component/pages/admin/admin-product/create-product/create-product.component';
 import { ListProductComponent } from './component/pages/admin/admin-product/list-product/list-product.component';
+import { UpdateProductComponent } from './component/pages/admin/admin-product/update-product/update-product.component';
 import { UserCreateComponent } from './component/pages/admin/admin-user/user-create/user-create.component';
 import { UserListComponent } from './component/pages/admin/admin-user/user-list/user-list.component';
 import { UserUpdateComponent } from './component/pages/admin/admin-user/user-update/user-update.component';
@@ -83,6 +84,7 @@ const routes: Routes = [
       { path: 'admin-user-update/:id', component: UserUpdateComponent },
       { path: 'admin-product-list', component: ListProductComponent },
       { path: 'admin-product-create', component: CreateProductComponent },
+      { path: 'admin-product-update/:id', component: UpdateProductComponent },
       { path: 'admin-profile', component: ProfileComponent },
       { path: 'admin-mail', component: ListMailComponent },
       { path: 'admin-mail/:id', component: MailDetailComponent },
