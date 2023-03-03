@@ -23,7 +23,6 @@ class ProductsController extends ResponseController
         if (is_null($product)) {
             return response()->json(['message' => 'Product not found']);
         }
-
         return $this->successResponse($product, "Thành công");
     }
 
@@ -87,7 +86,7 @@ class ProductsController extends ResponseController
 
     }
 
-    public function paginationTest(Request $request)
+    public function productFilterPagination(Request $request)
     {
         $categoryIds = $request->categoryIds;
         $brandIds = $request->brandIds;
@@ -121,7 +120,6 @@ class ProductsController extends ResponseController
 
     public function getTopSellingProduct(){
         $product = Product::orderBy('amount_of_sold', 'desc')->take(10)->get();
-
         return $this->successResponse($product, "Thành công");
     }
 

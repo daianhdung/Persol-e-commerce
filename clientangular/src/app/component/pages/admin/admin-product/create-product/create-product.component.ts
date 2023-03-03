@@ -18,14 +18,14 @@ export class CreateProductComponent {
   listCategory: any[] = [];
 
   isSubmitted: boolean = false;
+  images : File[] = []
 
   formData = this.formBuilder.group({
     name: ['', Validators.required],
     price: ['', Validators.required],
     brand: ['', Validators.required],
     category: ['', Validators.required],
-    mainImage: ['', Validators.required],
-    images: ['', Validators.required],
+    mainImage: ['', Validators.required]
   });
 
   constructor(
@@ -58,17 +58,20 @@ export class CreateProductComponent {
   }
 
   onImagesSelected(event: any) {
-    const files = event.target.files;
-    this.formData.controls['images'].setValue(files);
+    const files : FileList = event.target.files;
+    for(let i = 0 ; i < files.length; i++){
+      this.images.push(files[i])
+    }
   }
 
   onSubmit() {
     this.isSubmitted = true;
 
-    // this.formData.
+    console.log(this.images);
+
     if (this.formData.valid) {
       const formDataRequest = new FormData()
-      console.log(this.formData.value);
+      // console.log(this.formData.value);
 
       const nameValue = this.formData.controls['name'].value
       formDataRequest.append('name', nameValue ? nameValue: '')
@@ -85,8 +88,11 @@ export class CreateProductComponent {
       const mainImageValue = this.formData.controls['mainImage'].value
       formDataRequest.append('mainImage', mainImageValue ? mainImageValue: '')
 
-      const imagesValue = this.formData.controls['images'].value
-      formDataRequest.append('images', imagesValue ? imagesValue: '')
+      
+      for(let i = 0; i < this.images.length; i++){
+        formDataRequest.append('images[]', this.images[i])
+      }
+      console.log(this.images);
 
       this.spinner.show();
       this.productService.createProduct(formDataRequest).subscribe({

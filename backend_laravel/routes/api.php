@@ -31,7 +31,7 @@ Route::get('/product-topsell', [\App\Http\Controllers\api\ProductsController::cl
 Route::get('/product-feature', [\App\Http\Controllers\api\ProductsController::class, 'getFeatureProduct']);
 Route::get('/product-bestdeal', [\App\Http\Controllers\api\ProductsController::class, 'getTodayBestDealProduct']);
 
-Route::post('/product-filter', [\App\Http\Controllers\api\ProductsController::class, 'paginationTest']);
+Route::post('/product-filter', [\App\Http\Controllers\api\ProductsController::class, 'productFilterPagination']);
 
 //image api
 Route::post('/images', [\App\Http\Controllers\api\ImageController::class, 'uploadFile']);

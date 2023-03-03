@@ -12,6 +12,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+
+  imgBrandAPI = environment.imgBrandAPI
+
+  visitorCount: any 
   navHead = [
     {
       id: 1,
@@ -29,9 +33,6 @@ export class HeaderComponent {
       brands: [{id: '', name: '', image: '' }],
     },
   ];
-  imgBrandAPI = environment.imgBrandAPI
-
-  visitorCount: any 
 
   constructor(
     private loginService: LoginService,
@@ -39,7 +40,17 @@ export class HeaderComponent {
     private filterService: FilterService,
     private trackIpService: TrackIpService,
     private toastr: ToastrService
-  ) {}
+  ) {
+    
+    this.navHead.map((item) => {
+      this.brandService.getBrandsByCategoryId(item.id).subscribe({
+        next: (repsonse) => {
+          item.brands = repsonse.data;
+        },
+        error: (error) => console.log(error),
+      });
+    });
+  }
 
   isAuthenticated() {
     return this.loginService.isUserAuthenticated();
@@ -59,14 +70,6 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.navHead.map((item) => {
-      this.brandService.getBrandsByCategoryId(item.id).subscribe({
-        next: (repsonse) => {
-          item.brands = repsonse.data;
-        },
-        error: (error) => console.log(error),
-      });
-    });
     this.trackIpService.getVisitorCount().subscribe({
       next: response => this.visitorCount = response.data
     })

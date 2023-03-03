@@ -6,7 +6,7 @@ import { ProductService } from 'app/services/productService/product.service';
 import { environment } from 'environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y} from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -17,55 +17,60 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent {
-  id: any
-  product : any = {}
-  compareList: any[] = []
+  id: any;
+  product: any = {};
+  compareList: any[] = [];
 
-  toggleCompare = true
+  toggleCompare = true;
 
-  imgImageProductAPI = environment.imgProductImageAPI
-  imgProductAPI = environment.imgProductAPI
+  imgImageProductAPI = environment.imgProductImageAPI;
+  imgProductAPI = environment.imgProductAPI;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private spinner: NgxSpinnerService,
-    private downWordService: DownloadService, private compareService: CompareService){
-    spinner.show()
-    this.compareList = compareService.request
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private spinner: NgxSpinnerService,
+    private downWordService: DownloadService,
+    private compareService: CompareService
+  ) {
+    window.scrollTo(0, 0);
+    spinner.show();
+    this.compareList = compareService.request;
   }
 
-  ngOnInit(){
-    window.scrollTo(0, 0);
-    this.id = this.route.snapshot.paramMap.get('id')
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.productService.getProductById(this.id).subscribe({
-      next: response => {
-        this.product = response.data
+      next: (response) => {
+        this.product = response.data;
         console.log(response);
       },
-      error: error => {
-        console.log(error)
-        this.spinner.hide()
+      error: (error) => {
+        console.log(error);
+        this.spinner.hide();
       },
-      complete: () => this.spinner.hide()
-    })
+      complete: () => this.spinner.hide(),
+    });
   }
 
-  downloadWordProduct(id:any, fileName:string){
+  downloadWordProduct(id: any, fileName: string) {
     this.downWordService.downloadProduct(id).subscribe({
-      next: (response:Blob) => {
+      next: (response: Blob) => {
         const downloadUrl = URL.createObjectURL(response);
         const link = document.createElement('a');
-        link.href = downloadUrl
-        link.download = fileName + '.doc'
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
+        link.href = downloadUrl;
+        link.download = fileName + '.doc';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       },
-      error: (error) => console.log(error)
-    })
+      error: (error) => console.log(error),
+    });
   }
 
-  addItemCompare(){
-    this.compareService.addCompareProductItem(this.product)
-    this.toggleCompare = true
+  addItemCompare() {
+    this.compareService.addCompareProductItem(this.product);
+    this.toggleCompare = true;
   }
 
   onToggleChange(value: boolean) {
