@@ -232,7 +232,7 @@
     </div>
   </div>
 
-  <app-compare-bar></app-compare-bar>
+  <app-compare-bar [toggleCompare]="toggleCompare" (isToggleChange)="onToggleChange($event)"></app-compare-bar>
 </div>
 
 

@@ -5,6 +5,12 @@ import { UserGuard } from './auth/user.guard';
 import { AdminlayoutComponent } from './component/layout/admin/adminlayout/adminlayout.component';
 import { AuthenlayoutComponent } from './component/layout/auth/authenlayout/authenlayout.component';
 import { DefaultlayoutComponent } from './component/layout/default/defaultlayout/defaultlayout.component';
+import { CreateBrandComponent } from './component/pages/admin/admin-brand/create-brand/create-brand.component';
+import { ListBrandComponent } from './component/pages/admin/admin-brand/list-brand/list-brand.component';
+import { UpdateBrandComponent } from './component/pages/admin/admin-brand/update-brand/update-brand.component';
+import { CreateCategoryComponent } from './component/pages/admin/admin-category/create-category/create-category.component';
+import { ListCategoryComponent } from './component/pages/admin/admin-category/list-category/list-category.component';
+import { UpdateCategoryComponent } from './component/pages/admin/admin-category/update-category/update-category.component';
 import { AdminDashboardComponent } from './component/pages/admin/admin-dashboard/admin-dashboard.component';
 import { ListMailComponent } from './component/pages/admin/admin-mail/list-mail/list-mail.component';
 import { MailDetailComponent } from './component/pages/admin/admin-mail/mail-detail/mail-detail.component';
@@ -12,6 +18,7 @@ import { CreateProductComponent } from './component/pages/admin/admin-product/cr
 import { ListProductComponent } from './component/pages/admin/admin-product/list-product/list-product.component';
 import { UserCreateComponent } from './component/pages/admin/admin-user/user-create/user-create.component';
 import { UserListComponent } from './component/pages/admin/admin-user/user-list/user-list.component';
+import { UserUpdateComponent } from './component/pages/admin/admin-user/user-update/user-update.component';
 import { CompareComponent } from './component/pages/compare/compare.component';
 import { ContactComponent } from './component/pages/contact/contact.component';
 import { DetailComponent } from './component/pages/detail/detail.component';
@@ -72,12 +79,19 @@ const routes: Routes = [
       },
       { path: 'admin-dashboard', component: AdminDashboardComponent },
       { path: 'admin-user-list', component: UserListComponent },
-      { path: 'admin-product-list', component: ListProductComponent },
       { path: 'admin-user-create', component: UserCreateComponent },
+      { path: 'admin-user-update/:id', component: UserUpdateComponent },
+      { path: 'admin-product-list', component: ListProductComponent },
       { path: 'admin-product-create', component: CreateProductComponent },
       { path: 'admin-profile', component: ProfileComponent },
       { path: 'admin-mail', component: ListMailComponent },
       { path: 'admin-mail/:id', component: MailDetailComponent },
+      { path: 'admin-category-list', component: ListCategoryComponent },
+      { path: 'admin-category-create', component: CreateCategoryComponent },
+      { path: 'admin-category-update/:id', component: UpdateCategoryComponent },
+      { path: 'admin-brand-list', component: ListBrandComponent },
+      { path: 'admin-brand-create', component: CreateBrandComponent },
+      { path: 'admin-brand-update/:id', component: UpdateBrandComponent },
     ],
   },
   {

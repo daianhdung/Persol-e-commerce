@@ -17,8 +17,6 @@ export class SidebarFilterComponent {
 
   listCheckCategoryIds : any[] = []
   listCheckBrandIds : any[] = []
- 
-  imgBrandAPI = environment.apiUrl + 'images/brand/';
 
   constructor(private brandService: BrandService, private categoryService: CategoryService, private filterService: FilterService){}
 

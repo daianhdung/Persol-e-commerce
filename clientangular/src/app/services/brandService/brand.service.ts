@@ -10,8 +10,6 @@ export class BrandService {
 
   private allBrandAPI = environment.apiUrl + 'brands';
 
-  private imgBrandAPI = environment.apiUrl + 'brand/';
-
 
   constructor(private http: HttpClient) { }
 

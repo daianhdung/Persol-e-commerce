@@ -41,6 +41,7 @@ export class ContactComponent {
           this.formData.reset();
           this.isSuccess = true;
           this.spinner.hide();
+          window.scrollTo(0, 0);
         },
         error: () => {
           this.isSuccess = true;

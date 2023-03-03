@@ -11,7 +11,7 @@ import { environment } from 'environments/environment';
 export class CompareComponent {
 
   productCompareList: any[] = []
-  imgProductAPI = environment.apiUrl + 'images/product/';
+  imgProductAPI = environment.imgProductAPI
 
   constructor(
     private compareService: CompareService,

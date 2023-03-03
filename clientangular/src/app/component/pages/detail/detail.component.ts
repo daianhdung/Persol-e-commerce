@@ -23,8 +23,8 @@ export class DetailComponent {
 
   toggleCompare = true
 
-  imgImageProductAPI = environment.apiUrl + 'images/product_image/';
-  imgProductAPI = environment.apiUrl + 'images/product/';
+  imgImageProductAPI = environment.imgProductImageAPI
+  imgProductAPI = environment.imgProductAPI
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private spinner: NgxSpinnerService,
     private downWordService: DownloadService, private compareService: CompareService){
@@ -65,5 +65,10 @@ export class DetailComponent {
 
   addItemCompare(){
     this.compareService.addCompareProductItem(this.product)
+    this.toggleCompare = true
+  }
+
+  onToggleChange(value: boolean) {
+    this.toggleCompare = value;
   }
 }

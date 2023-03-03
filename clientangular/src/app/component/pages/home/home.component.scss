@@ -24,9 +24,12 @@
 }
 
 .top_branch_slide {
-  width: 1280px;
+  width: 1360px;
   height: 450px;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -34,6 +37,7 @@
 .wrap_swiper {
   display: flex;
   justify-content: center;
+  
 }
 
 .title {
@@ -42,5 +46,14 @@
   color: #5b5b5b;
   &:hover {
       color: #2ac37d;
+  }
+}
+
+.card {
+  &:hover .card-title{
+    color: #2ac37d;
+  }
+  &:hover .card-price{
+    color: #28a1b6;
   }
 }

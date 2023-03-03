@@ -32,24 +32,31 @@
             <div class="wrapper_product">
               <!-- <div class="inner_product"> -->
               <div class="row w-100 mt-3">
-                <div class="col-md-3 mb-5" *ngFor="let item of listProduct">
-                  <div class="card">
-                    <a [routerLink]="'/detail/' + item.id">
-                      <div class="card-img">
-                        <img [src]="imgProductAPI + item.main_image" />
-                      </div>
-                      <div class="card-title">
-                        <h5>{{ item.name }}</h5>
-                      </div>
-                      <div class="card-price p-1 fs-5 fw-bold">
-                        <span>{{ item.price | number : "1.0-3" }}₫</span>
-                      </div>
-                    </a>
-                    <span (click)="addItemCompare(item)" class="compare_icon mt-2"
-                        ><i class="bi bi-plus-circle"></i> Compare</span
-                      >
+                <ng-container *ngIf="listProduct.length > 0 ;else noItem">
+                  <div class="col-md-3 mb-5" *ngFor="let item of listProduct">
+                    <div class="card">
+                      <a [routerLink]="'/detail/' + item.id">
+                        <div class="card-img">
+                          <img [src]="imgProductAPI + item.main_image" />
+                        </div>
+                        <div class="card-title">
+                          <h5>{{ item.name }}</h5>
+                        </div>
+                        <div class="card-price p-1 fs-5 fw-bold">
+                          <span>{{ item.price | number : "1.0-3" }}₫</span>
+                        </div>
+                      </a>
+                      <span (click)="addItemCompare(item)" class="compare_icon mt-2"
+                          ><i class="bi bi-plus-circle"></i> Compare</span
+                        >
+                    </div>
                   </div>
-                </div>
+                </ng-container>
+                <ng-template #noItem>
+                  <div class="mb-4 col-md-3">
+                    <h3>No product is found!</h3>
+                  </div>
+                </ng-template>
 
                 <!-- Pagination -->
                 <div class="row d-flex justify-content-center bg-white">
@@ -101,5 +108,5 @@
   </div>
 </div>
 <div class="container">
-  <app-compare-bar></app-compare-bar>
+  <app-compare-bar [toggleCompare]="toggleCompare" (isToggleChange)="onToggleChange($event)"></app-compare-bar>
 </div>

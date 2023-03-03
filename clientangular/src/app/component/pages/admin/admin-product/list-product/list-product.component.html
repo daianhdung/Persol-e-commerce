@@ -11,16 +11,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th class="" scope="row">dsa</th>
-      <td style="max-width: '200px'">das</td>
-      <td>das</td>
-      <td style="max-width: '90px'">das</td>
-      <td>das</td>
-      <td>asd</td>
+    <tr *ngFor="let item of productList">
+      <th class="" scope="row">{{item.id}}</th>
+      <td style="max-width: '120px'">{{item.name}}</td>
+      <td><img width="150px" height="100px" [src]="productImagePI + item.main_image" alt=""></td>
+      <td style="max-width: '90px'">{{item.category.name}}</td>
+      <td>{{item.brand.name}}</td>
+      <td>{{ item.price | number : "1.0-3" }}₫</td>
       <td class="table-action">
         <a> <i class="bi bi-pencil-square text-info fs-3"></i> </a>
-        <a> <i class="bi bi-trash text-danger fs-3 ms-3"></i> </a>
+        <a routerLink="/admin-product-list" (click)="deleteProduct(item.id)"> <i class="bi bi-trash text-danger fs-3 ms-3"></i> </a>
       </td>
     </tr>
   </tbody>

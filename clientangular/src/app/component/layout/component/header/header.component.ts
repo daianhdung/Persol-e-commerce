@@ -29,7 +29,7 @@ export class HeaderComponent {
       brands: [{id: '', name: '', image: '' }],
     },
   ];
-  imgBrandAPI = environment.apiUrl + 'images/brand/';
+  imgBrandAPI = environment.imgBrandAPI
 
   visitorCount: any 
 

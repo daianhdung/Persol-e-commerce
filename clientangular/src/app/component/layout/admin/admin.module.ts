@@ -28,6 +28,12 @@ import { UserUpdateComponent } from 'app/component/pages/admin/admin-user/user-u
 import { ProfileComponent } from 'app/component/pages/profile/profile.component';
 import { ListMailComponent } from 'app/component/pages/admin/admin-mail/list-mail/list-mail.component';
 import { MailDetailComponent } from 'app/component/pages/admin/admin-mail/mail-detail/mail-detail.component';
+import { CreateCategoryComponent } from 'app/component/pages/admin/admin-category/create-category/create-category.component';
+import { UpdateCategoryComponent } from 'app/component/pages/admin/admin-category/update-category/update-category.component';
+import { ListCategoryComponent } from 'app/component/pages/admin/admin-category/list-category/list-category.component';
+import { CreateBrandComponent } from 'app/component/pages/admin/admin-brand/create-brand/create-brand.component';
+import { UpdateBrandComponent } from 'app/component/pages/admin/admin-brand/update-brand/update-brand.component';
+import { ListBrandComponent } from 'app/component/pages/admin/admin-brand/list-brand/list-brand.component';
 
 
 
@@ -43,7 +49,13 @@ import { MailDetailComponent } from 'app/component/pages/admin/admin-mail/mail-d
     UpdateProductComponent,
     ProfileComponent,
     ListMailComponent,
-    MailDetailComponent
+    MailDetailComponent,
+    CreateCategoryComponent,
+    UpdateCategoryComponent,
+    ListCategoryComponent,
+    CreateBrandComponent,
+    UpdateBrandComponent,
+    ListBrandComponent,
   ],
   imports: [
     CommonModule,

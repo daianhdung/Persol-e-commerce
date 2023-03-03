@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { CompareService } from 'app/services/productService/compare.service';
 import { environment } from 'environments/environment';
 
@@ -8,24 +8,22 @@ import { environment } from 'environments/environment';
   styleUrls: ['./compare-bar.component.scss']
 })
 export class CompareBarComponent {
-  toggleCompare = true
+  @Input() toggleCompare = true
+  @Output() isToggleChange: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   compareList: any[] = []
-  imgProductAPI = environment.apiUrl + 'images/product/';
+  imgProductAPI = environment.imgProductAPI
 
   constructor(private compareService: CompareService){
     this.compareList = compareService.request
   }
 
   toggleCompareButton(){
-    console.log(this.toggleCompare);
     this.toggleCompare = !this.toggleCompare
-    console.log(this.toggleCompare);
+    this.isToggleChange.emit(this.toggleCompare)
   }
 
-  addItemCompare(product:any){
-    this.compareService.addCompareProductItem(product)
-  }
+
 
   removeItemCompare(id:any){
     this.compareService.removeCompareProductItem(id)

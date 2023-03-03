@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'app/services/productService/product.service';
+import { environment } from 'environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-product',
@@ -7,4 +10,29 @@ import { Component } from '@angular/core';
 })
 export class ListProductComponent {
 
+  productList: any[] = [];
+
+  productImagePI = environment.imgProductAPI
+
+  constructor(private productService: ProductService, private toastr: ToastrService) {}
+
+  ngOnInit(){
+
+    this.productService.getAllProduct().subscribe({
+      next: response => {
+        this.productList = response.data
+      },
+      error: error => console.log(error)
+    })
+  }
+
+  deleteProduct(id:any){
+    this.productService.deleteProduct(id).subscribe({
+      next: response => {
+        this.productList = this.productList.filter((item) => item.id !== id);
+        this.toastr.success(response.message)
+      },
+      error: response => this.toastr.error(response.message)
+    })
+  }
 }

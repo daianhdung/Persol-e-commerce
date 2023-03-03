@@ -36,7 +36,9 @@ export class ProductComponent {
 
   listProduct: any[] = [];
 
-  imgProductAPI = environment.apiUrl + 'images/product/';
+  imgProductAPI = environment.imgProductAPI
+
+  toggleCompare = true
 
   constructor(
     private productService: ProductService,
@@ -97,6 +99,11 @@ export class ProductComponent {
 
   addItemCompare(product:any){
     this.compareService.addCompareProductItem(product)
+    this.toggleCompare = true
+  }
+
+  onToggleChange(value: boolean) {
+    this.toggleCompare = value;
   }
 
   ngOnDestroy(): void {

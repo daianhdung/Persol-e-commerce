@@ -19,12 +19,17 @@ Route::post('/signup', [\App\Http\Controllers\api\UserController::class, 'regist
 Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']);
 
 //product api
-Route::get('/product', [\App\Http\Controllers\api\ProductsController::class, 'show']);
+Route::get('/products', [\App\Http\Controllers\api\ProductsController::class, 'getAllProduct']);
 Route::get('/product-detail', [\App\Http\Controllers\api\ProductsController::class, 'detailListProduct']);
 Route::get('/product/{id}', [\App\Http\Controllers\api\ProductsController::class, 'detailProduct']);
-Route::delete('/delete/{id}', [\App\Http\Controllers\api\ProductsController::class, 'delete']);
-Route::post('/add', [\App\Http\Controllers\api\ProductsController::class, 'addproduct']);
+Route::post('/product', [\App\Http\Controllers\api\ProductsController::class, 'createProduct']);
 Route::put('/update/{id}', [\App\Http\Controllers\api\ProductsController::class, 'updateporoduct']);
+Route::delete('/product/{id}', [\App\Http\Controllers\api\ProductsController::class, 'deleteProduct']);
+
+//Product customized
+Route::get('/product-topsell', [\App\Http\Controllers\api\ProductsController::class, 'getTopSellingProduct']);
+Route::get('/product-feature', [\App\Http\Controllers\api\ProductsController::class, 'getFeatureProduct']);
+Route::get('/product-bestdeal', [\App\Http\Controllers\api\ProductsController::class, 'getTodayBestDealProduct']);
 
 Route::post('/product-filter', [\App\Http\Controllers\api\ProductsController::class, 'paginationTest']);
 
@@ -34,7 +39,13 @@ Route::get('/images/{category}/{fileName}', [\App\Http\Controllers\api\ImageCont
 
 //user api
 Route::get('/users', [\App\Http\Controllers\api\UserController::class, 'getAllUser']);
-Route::delete('/deleteUser/{id}', [\App\Http\Controllers\api\ProductsController::class, 'deleteUser']);
+Route::get('/user/{id}', [\App\Http\Controllers\api\UserController::class, 'getUserById']);
+Route::post('/user', [\App\Http\Controllers\api\UserController::class, 'createUser']);
+Route::put('/user/{id}', [\App\Http\Controllers\api\UserController::class, 'updateUserById']);
+Route::delete('/user/{id}', [\App\Http\Controllers\api\UserController::class, 'deleteUser']);
+
+//Role API
+Route::get('/roles', [\App\Http\Controllers\api\RoleController::class, 'getAllRole']);
 
 //mail
 Route::get('/mails', [\App\Http\Controllers\api\ContactController::class, 'getAllMail']);
@@ -44,11 +55,17 @@ Route::delete('/mail/{id}', [\App\Http\Controllers\api\ContactController::class,
 //Brand
 Route::get('/brands', [\App\Http\Controllers\api\BrandController::class, 'getAllBrand']);
 Route::get('/categories/{idCate}/brands', [\App\Http\Controllers\api\BrandController::class, 'getAllBrandByIdCategory']);
+Route::post('/brand', [\App\Http\Controllers\api\BrandController::class, 'createBrand']);
+Route::put('/brand/{id}', [\App\Http\Controllers\api\BrandController::class, 'updateBrandId']);
+Route::delete('/brand/{id}', [\App\Http\Controllers\api\BrandController::class, 'deleteBrand']);
 
 Route::get('/test22', [\App\Http\Controllers\api\BrandController::class, 'getBrandCategory']);
 
 //Category
 Route::get('/categories', [\App\Http\Controllers\api\CategoryController::class, 'getAllCategory']);
+Route::post('/category', [\App\Http\Controllers\api\CategoryController::class, 'createCategory']);
+Route::put('/category/{id}', [\App\Http\Controllers\api\CategoryController::class, 'updateCategoryId']);
+Route::delete('/category/{id}', [\App\Http\Controllers\api\CategoryController::class, 'deleteCategory']);
 
 //Word Download
 Route::get('/word/{id}', [\App\Http\Controllers\api\WordController::class, 'downloadWord']);
